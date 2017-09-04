@@ -22330,15 +22330,86 @@ module.exports = ReactDOMInvalidARIAHook;
 
 var React = __webpack_require__(49);
 
+var Content = __webpack_require__(197);
+var Header = __webpack_require__(195);
+var Footer = __webpack_require__(196);
+
 var Root = React.createClass({
     displayName: "Root",
 
     render: function () {
-        return React.createElement("div", { id: "Root" }, React.createElement("h1", null, " React "));
+        return React.createElement("section", { id: "Root" }, React.createElement(Header, null), React.createElement(Content, null), React.createElement(Footer, null));
     }
 });
 
 module.exports = Root;
+
+/***/ }),
+/* 194 */,
+/* 195 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var React = __webpack_require__(49);
+
+var Header = React.createClass({
+    displayName: "Header",
+
+    render: function () {
+        return React.createElement("header", { id: "body-header", className: "container-fluid" }, React.createElement("div", { className: "row m-auto" }, React.createElement("div", { className: "col-12 d-inline-flex" }, React.createElement("a", { href: "#", className: "fadein" }, React.createElement("h2", null, "Blog")), React.createElement("a", { href: "#", className: "logout fadein" }, React.createElement("i", { className: "fa fa-power-off fa-2x", "aria-hidden": "true" })))));
+    }
+});
+
+module.exports = Header;
+
+/***/ }),
+/* 196 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var React = __webpack_require__(49);
+
+var Footer = React.createClass({
+    displayName: "Footer",
+
+    render: function () {
+        return React.createElement("footer", { id: "body-footer", className: "container-fluid" }, React.createElement("div", { className: "row m-auto" }, React.createElement("div", { className: "col-12 justify-content-center" }, React.createElement("p", null, React.createElement("i", { className: "fa fa-copyright", "aria-hidden": "true" }), " Trystan Eveno - ECV Digital"))));
+    }
+});
+
+module.exports = Footer;
+
+/***/ }),
+/* 197 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var React = __webpack_require__(49);
+
+var List = __webpack_require__(198);
+
+var Content = React.createClass({
+    displayName: "Content",
+
+    render: function () {
+        return React.createElement("section", { id: "content" }, React.createElement(List, null));
+    }
+});
+
+module.exports = Content;
+
+/***/ }),
+/* 198 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var React = __webpack_require__(49);
+
+var List = React.createClass({
+    displayName: "List",
+
+    render: function () {
+        return React.createElement("div", { id: "list" }, React.createElement("section", { className: "container-fluid" }, React.createElement("header", { className: "row justify-content-center" }, React.createElement("div", { className: "col-11" }, React.createElement("h3", null, "List of articles"), React.createElement("ol", { className: "breadcrumb" }, React.createElement("li", { className: "breadcrumb-item" }, React.createElement("a", { className: "fadein", href: "#" }, React.createElement("i", { className: "fa fa-home", "aria-hidden": "true" }), " Home")), React.createElement("li", { className: "breadcrumb-item active" }, React.createElement("i", { className: "fa fa-list", "aria-hidden": "true" }), " List"))))));
+    }
+});
+
+module.exports = List;
 
 /***/ })
 /******/ ]);

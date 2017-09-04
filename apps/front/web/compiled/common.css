@@ -5237,6 +5237,32 @@ a.text-dark:focus, a.text-dark:hover {
 .invisible {
   visibility: hidden !important; }
 
+.breadcrumb {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  list-style: none;
+  background-color: #e9ecef;
+  border-radius: 0.25rem; }
+  .breadcrumb::after {
+    display: block;
+    clear: both;
+    content: ""; }
+
+.breadcrumb-item {
+  float: left; }
+  .breadcrumb-item + .breadcrumb-item::before {
+    display: inline-block;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    color: #868e96;
+    content: "/"; }
+  .breadcrumb-item + .breadcrumb-item:hover::before {
+    text-decoration: underline; }
+  .breadcrumb-item + .breadcrumb-item:hover::before {
+    text-decoration: none; }
+  .breadcrumb-item.active {
+    color: #868e96; }
+
 .card {
   position: relative;
   display: flex;
@@ -5999,13 +6025,80 @@ a.text-dark:focus, a.text-dark:hover {
   border-top-right-radius: 0.2rem;
   border-bottom-right-radius: 0.2rem; }
 
+footer {
+  text-align: center; }
+
+header#body-header {
+  background-color: #00ccff;
+  height: 60px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem; }
+  header#body-header .logout {
+    color: #fff;
+    margin-left: auto;
+    padding-top: 1rem; }
+    header#body-header .logout:hover {
+      color: #db052b; }
+
+div#list {
+  padding-bottom: 25px;
+  padding-top: 25px; }
+
+.fadein {
+  -webkit-transition: background-color .2s ease-in, color .2s ease-in, fill .2s ease-in;
+  transition: background-color .2s ease-in, color .2s ease-in, fill .2s ease-in; }
+
 html {
   font-size: 10px; }
 
 body {
-  color: #000000;
+  color: #fff;
+  background-color: #f2f2f2;
   font-family: "Nunito Sans", sans-serif;
   font-size: 1.5rem;
   line-height: 1.5; }
+
+a:hover {
+  text-decoration: none; }
+
+h1, h2, h3 {
+  font-weight: 400;
+  line-height: 1.3; }
+
+h1 {
+  color: #fff;
+  font-size: 4.5rem;
+  margin-bottom: 1.5rem; }
+
+h2 {
+  color: #fff;
+  font-size: 4rem;
+  margin-bottom: 2rem; }
+
+h3 {
+  color: #9d9c9c;
+  font-size: 3.5rem;
+  margin-bottom: 1rem; }
+
+h4 {
+  color: #9d9c9c;
+  font-size: 2.3rem;
+  font-weight: 300; }
+
+h5 {
+  color: #9d9c9c;
+  font-size: 2.3rem;
+  font-weight: 300; }
+
+p {
+  color: #9d9c9c; }
+
+.breadcrumb a {
+  color: #9d9c9c; }
+  .breadcrumb a:hover {
+    color: #333333; }
+
+.breadcrumb .active {
+  color: #333333; }
 
 /*# sourceMappingURL=common.css.map*/

@@ -1,11 +1,17 @@
 var React = require("react");
 
+var Content = require("./common/Content.js");
+var Header = require("./common/Header.js");
+var Footer = require("./common/Footer.js");
+
 var Root = React.createClass({
     render: function () {
         return (
-            <div id="Root">
-                <h1> React </h1>
-            </div>
+            <section id="Root">
+                <Header />
+                <Content />
+                <Footer />
+            </section>
         );
     }
 });

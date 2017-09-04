@@ -1,0 +1,14 @@
+header#body-header {
+    background-color: $primary_blue;
+    height: 60px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    .logout {
+        color: $primary_white;
+        margin-left: auto;
+        padding-top: 1rem;
+        &:hover {
+            color: $primary_red;
+        }
+    }
+}
