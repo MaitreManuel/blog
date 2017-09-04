@@ -1,7 +1,7 @@
 var React = require("react");
 
 var Header = React.createClass({
-    render: function () {
+    render() {
         return (
             <header id="body-header" className="container-fluid">
                 <div className="row m-auto">
@@ -9,9 +9,13 @@ var Header = React.createClass({
                         <a href="#" className="fadein">
                             <h2>Blog</h2>
                         </a>
-                        <a href="#" className="logout fadein">
-                            <i className="fa fa-power-off fa-2x" aria-hidden="true"></i>
-                        </a>
+                        {
+                            (true)
+                            &&
+                            <a href="#" className="logout fadein">
+                                <i className="fa fa-power-off fa-2x" aria-hidden="true"></i>
+                            </a>
+                        }
                     </div>
                 </div>
             </header>

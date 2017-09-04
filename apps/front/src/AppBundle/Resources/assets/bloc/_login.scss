@@ -1,0 +1,30 @@
+div#login {
+    padding-bottom: 25px;
+    padding-top: 25px;
+
+    button {
+        float: right;
+    }
+
+    h3, h4 {
+        color: $primary_blue;
+    }
+
+    span {
+        color: $medium_grey;
+    }
+
+    .form-check {
+        display: inline-flex;
+    }
+
+    .form-group {
+        margin-bottom: 2rem;
+    }
+
+    .login-content {
+        background-color: $primary_white;
+        border-top: 4px solid #66ccff;
+        padding: 5rem;
+    }
+}

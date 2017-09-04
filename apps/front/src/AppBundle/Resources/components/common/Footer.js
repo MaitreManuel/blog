@@ -1,7 +1,7 @@
 var React = require("react");
 
 var Footer = React.createClass({
-    render: function () {
+    render() {
         return (
             <footer id="body-footer" className="container-fluid">
                 <div className="row m-auto">

@@ -1,7 +1,7 @@
 var React = require("react");
 
 var List = React.createClass({
-    render: function () {
+    render() {
         return (
             <div id="list">
                 <section className="container-fluid">

@@ -5,7 +5,7 @@ var Header = require("./common/Header.js");
 var Footer = require("./common/Footer.js");
 
 var Root = React.createClass({
-    render: function () {
+    render() {
         return (
             <section id="Root">
                 <Header />

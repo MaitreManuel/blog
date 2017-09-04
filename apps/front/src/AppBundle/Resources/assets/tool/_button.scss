@@ -1,0 +1,16 @@
+a.btn, button.btn {
+    border-radius: 7px;
+    outline: none;
+    padding: 8px 20px;
+
+    &.btn-blue {
+        background-color: $primary_blue;
+        border: 1px solid $primary_blue;
+        color: $primary_white;
+        &:active, &:focus, &:hover {
+            background-color: $primary_white;
+            color: $primary_blue;
+            cursor: pointer;
+        }
+    }
+}
