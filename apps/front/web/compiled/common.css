@@ -6300,7 +6300,7 @@ select.form-control-lg:not([size]):not([multiple]) {
   border-top-right-radius: 0.2rem;
   border-bottom-right-radius: 0.2rem; }
 
-footer {
+footer#body-footer {
   bottom: 0;
   left: 0;
   padding: 1rem;
@@ -6331,16 +6331,32 @@ div#login {
     float: right; }
   div#login h3, div#login h4 {
     color: #66ccff; }
+  div#login header {
+    margin-bottom: 3rem;
+    text-align: center; }
   div#login span {
     color: #9d9c9c; }
   div#login .form-check {
     display: inline-flex; }
+    div#login .form-check input {
+      margin-top: 0.4rem; }
+    div#login .form-check p {
+      margin-left: 5px; }
   div#login .form-group {
     margin-bottom: 2rem; }
   div#login .login-content {
     background-color: #fff;
     border-top: 4px solid #66ccff;
-    padding: 5rem; }
+    padding: 3rem 5rem 3.5rem; }
+    @media all and (max-width: 576px) {
+      div#login .login-content {
+        padding: 3rem 2.5rem 3.5rem; } }
+  div#login .site-title {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    text-align: center; }
+    div#login .site-title h1 {
+      color: #9d9c9c; }
 
 .fadein {
   -webkit-transition: background-color .2s ease-in, color .2s ease-in, fill .2s ease-in;

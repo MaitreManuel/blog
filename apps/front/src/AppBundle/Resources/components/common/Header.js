@@ -7,7 +7,7 @@ var Header = React.createClass({
                 <div className="row m-auto">
                     <div className="col-12 d-inline-flex">
                         <a href="#" className="fadein">
-                            <h2>Blog</h2>
+                            <h2>ECV_blog</h2>
                         </a>
                         {
                             (true)
