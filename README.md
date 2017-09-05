@@ -6,7 +6,7 @@
 
 1. You need to have an apache environnement. If you need one :
 
-⋅⋅⋅Linux: [LAMP](https://forum.ubuntu-fr.org/viewtopic.php?id=1990066)
+...Linux: [LAMP](https://forum.ubuntu-fr.org/viewtopic.php?id=1990066)
 ⋅⋅⋅Windows: [WAMP](http://alcatiz.developpez.com/tutoriel/installer-wamp-windows10/)
 
 2. You move the repository here :
