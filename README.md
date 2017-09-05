@@ -14,7 +14,7 @@
 * Linux: `/var/www/`
 * Windows: `C:/wamp/www/`
 
-3. You install front dependencies :
+3. You install front dependencies in this folder `/blog/apps/front/` :
 
 ```
 npm i                   # install node_modules and compile assets
