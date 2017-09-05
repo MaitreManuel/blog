@@ -22338,7 +22338,7 @@ var Root = React.createClass({
     displayName: "Root",
 
     render() {
-        return React.createElement("section", { id: "Root" }, React.createElement(Header, null), React.createElement(Content, null), React.createElement(Footer, null));
+        return React.createElement("section", { id: "Root" }, React.createElement(Header, null), React.createElement(Content, null), false && React.createElement(Footer, null));
     }
 });
 
@@ -22387,7 +22387,7 @@ var List = React.createClass({
     displayName: "List",
 
     render() {
-        return React.createElement("div", { id: "list" }, React.createElement("section", { className: "container-fluid" }, React.createElement("header", { className: "row justify-content-center" }, React.createElement("div", { className: "col-11" }, React.createElement("h3", null, "List of articles"), React.createElement("ol", { className: "breadcrumb" }, React.createElement("li", { className: "breadcrumb-item" }, React.createElement("a", { className: "fadein", href: "#" }, React.createElement("i", { className: "fa fa-home", "aria-hidden": "true" }), " Home")), React.createElement("li", { className: "breadcrumb-item active" }, React.createElement("i", { className: "fa fa-list", "aria-hidden": "true" }), " List"))))));
+        return React.createElement("div", { id: "list" }, React.createElement("section", { className: "container-fluid" }, React.createElement("header", { className: "row justify-content-center" }, React.createElement("div", { className: "col-11" }, React.createElement("h3", null, "Articles")))), React.createElement("section", { className: "container-fluid" }, React.createElement("div", { className: "row justify-content-center" }, React.createElement("div", { className: "col-11" }, React.createElement("div", { className: "row" }, React.createElement("article", { className: "col-12 col-lg-6" }, React.createElement("div", { className: "article-entry" }, React.createElement("header", { className: "img" }, React.createElement("img", { src: "http://lorempixel.com/640/480/city/", alt: "Test", className: "img-fit img-fit-cover" })), React.createElement("div", { className: "article-content" }, React.createElement("h2", null, "Lorem ipsum dolor sit amet"), React.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lectus mi, luctus eu nibh in, interdum tincidunt turpis. Vestibulum mattis ante quis risus consectetur pharetra. Fusce pulvinar, odio non fermentum semper, libero velit volutpat purus, sit amet fringilla libero quam at eros."), React.createElement("a", { className: "more fadein", href: "#" }, "Lire l''article")))), React.createElement("article", { className: "col-12 col-lg-6" }, React.createElement("div", { className: "article-entry" }, React.createElement("header", { className: "img" }, React.createElement("img", { src: "http://lorempixel.com/640/480/city/", alt: "Test", className: "img-fit img-fit-cover" })), React.createElement("div", { className: "article-content" }, React.createElement("h2", null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit."), React.createElement("p", null, "Comme dirait un comp\xE8re \"mais c'est dla merde, c'est dla merde !\" - Jean-Pierre Coffe"), React.createElement("a", { className: "more fadein", href: "#" }, "Lire l''article")))), React.createElement("article", { className: "col-12 col-lg-6" }, React.createElement("div", { className: "article-entry" }, React.createElement("header", { className: "img" }, React.createElement("img", { src: "http://lorempixel.com/640/480/city/", alt: "Test", className: "img-fit img-fit-cover" })), React.createElement("div", { className: "article-content" }, React.createElement("h2", null, "Lorem ipsum dolor sit amet"), React.createElement("p", null, "Comme dirait un comp\xE8re \"mais c'est dla merde, c'est dla merde !\" - Jean-Pierre Coffe"), React.createElement("a", { className: "more fadein", href: "#" }, "Lire l''article")))), React.createElement("article", { className: "col-12 col-lg-6" }, React.createElement("div", { className: "article-entry" }, React.createElement("header", { className: "img" }, React.createElement("img", { src: "http://lorempixel.com/640/480/city/", alt: "Test", className: "img-fit img-fit-cover" })), React.createElement("div", { className: "article-content" }, React.createElement("h2", null, "Lorem ipsum dolor sit amet"), React.createElement("p", null, "Comme dirait un comp\xE8re \"mais c'est dla merde, c'est dla merde !\" - Jean-Pierre Coffe"), React.createElement("a", { className: "more fadein", href: "#" }, "Lire l''article")))))))));
     }
 });
 
@@ -22410,7 +22410,6 @@ var Login = React.createClass({
     updateUser(event) {
         var user = this.state.user;
         user[event.target.name] = event.target.value;
-        console.log(user);
         this.setState({ user: user });
     },
 
@@ -22431,7 +22430,7 @@ var Header = React.createClass({
     displayName: "Header",
 
     render() {
-        return React.createElement("header", { id: "body-header", className: "container-fluid" }, React.createElement("div", { className: "row m-auto" }, React.createElement("div", { className: "col-12 d-inline-flex" }, React.createElement("a", { href: "#", className: "fadein" }, React.createElement("h2", null, "ECV_blog")), true && React.createElement("a", { href: "#", className: "logout fadein" }, React.createElement("i", { className: "fa fa-power-off fa-2x", "aria-hidden": "true" })))));
+        return React.createElement("header", { id: "body-header", className: "container-fluid" }, React.createElement("div", { className: "row m-auto" }, React.createElement("div", { className: "col-12 d-inline-flex" }, React.createElement("a", { href: "#", className: "fadein" }, React.createElement("h2", null, "ECV_blog")), false && React.createElement("a", { href: "#", className: "logout fadein" }, React.createElement("i", { className: "fa fa-power-off fa-2x", "aria-hidden": "true" })))));
     }
 });
 

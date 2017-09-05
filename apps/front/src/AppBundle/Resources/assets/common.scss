@@ -16,6 +16,7 @@
 @import '~bootstrap/scss/navbar';
 @import '~bootstrap/scss/pagination';
 
+@import 'bloc/article';
 @import 'bloc/footer';
 @import 'bloc/header';
 @import 'bloc/list';
@@ -81,14 +82,33 @@ p {
     color: $medium_grey;
 }
 
-.breadcrumb {
-    a {
-        color: $medium_grey;
-        &:hover {
-            color: $dark_grey;
-        }
-    }
-    .active {
-        color: $dark_grey;
-    }
+.img-fit {
+    height: 100%;
+    width: 100%;
+}
+
+.img-fit-fill {
+    object-fit: fill;
+}
+
+.img-fit-contain {
+    object-fit: contain;
+}
+
+.img-fit-cover {
+    object-fit: cover;
+}
+
+.img-fit-none {
+    object-fit: none;
+}
+
+.img-fit-scale-down {
+    object-fit: scale-down;
+}
+
+.img-responsive {
+    height: auto;
+    max-width: 100%;
+    width: auto;
 }

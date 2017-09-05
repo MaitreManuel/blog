@@ -10,7 +10,7 @@ var Header = React.createClass({
                             <h2>ECV_blog</h2>
                         </a>
                         {
-                            (true)
+                            (false)
                             &&
                             <a href="#" className="logout fadein">
                                 <i className="fa fa-power-off fa-2x" aria-hidden="true"></i>

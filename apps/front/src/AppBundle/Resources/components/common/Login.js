@@ -9,7 +9,6 @@ var Login = React.createClass({
     updateUser(event) {
         var user = this.state.user;
         user[event.target.name] = event.target.value;
-        console.log(user)
         this.setState({user: user});
     },
 

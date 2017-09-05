@@ -10,7 +10,7 @@ var Root = React.createClass({
             <section id="Root">
                 <Header />
                 <Content />
-                <Footer />
+                {false && <Footer />}
             </section>
         );
     }

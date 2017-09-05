@@ -1,0 +1,38 @@
+article {
+    padding: 15px;
+    @media all and (max-width: 576px) {
+      padding: 15px 0;
+    }
+    div.article-entry {
+      background-color: $primary_white;
+      div.article-content {
+        padding: 20px 15px;
+        a.more {
+          color: $primary_red;
+          font-family: $nunito;
+          text-decoration: underline;
+          &:hover {
+            color: $primary_black;
+          }
+        }
+        a, h2, p {
+          height: 10rem;
+        }
+        a {
+          line-height: 25px;
+          max-height: 41px;
+          max-width: 210px;
+          min-height: 41px;
+          &::after {
+            top: 8px;
+          }
+        }
+        h2 {
+            color: $primary_red;
+        }
+      }
+      header.img {
+        height: 250px;
+      }
+    }
+}
