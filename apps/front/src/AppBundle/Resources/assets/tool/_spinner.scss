@@ -1,0 +1,32 @@
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+#loader {
+    z-index: 110;
+    position: absolute;
+    top: calc(50vh - 55px);
+    left: calc(50vw - 55px);
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid $primary_blue;
+    width: 80px;
+    height: 80px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+#overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1003;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+}

@@ -1,6 +1,6 @@
 var React = require("react");
 
-var Header = React.createClass({
+class Header extends React.Component {
     render() {
         return (
             <header id="body-header" className="container-fluid">
@@ -21,6 +21,6 @@ var Header = React.createClass({
             </header>
         );
     }
-});
+}
 
 module.exports = Header;

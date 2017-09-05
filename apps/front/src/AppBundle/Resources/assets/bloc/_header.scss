@@ -1,8 +1,11 @@
 header#body-header {
     background-color: $primary_blue;
-    height: 60px;
+    height: 90px;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    h2 {
+        line-height: 2;
+    }
     .logout {
         color: $primary_white;
         margin-left: auto;

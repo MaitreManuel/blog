@@ -16,15 +16,23 @@ class Comment {
         $this->conn = $db;
     }
 
-    function read() {
+    function readAllFromId($article_id) {
         $query = "SELECT
-                    comment_id,
-                    comment_authorid,
-                    comment_articleid,
-                    comment_content,
-                    comment_title,
-                    comment_date
-                    FROM ". $this->table_name;
+                    comments.comment_id,
+                    comments.comment_authorid,
+                    comments.comment_articleid,
+                    comments.comment_content,
+                    comments.comment_title,
+                    comments.comment_date,
+                    users.user_firstname,
+                    users.user_lastname
+                  FROM ". $this->table_name ."
+                  INNER JOIN articles ON
+                  comments.comment_articleid = ". $article_id ."
+                  LEFT JOIN users
+                  ON comments.comment_authorid = users.user_id
+                  WHERE comments.comment_articleid = ". $article_id ."
+                  ORDER BY comments.comment_date DESC";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
 

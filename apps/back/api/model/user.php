@@ -17,7 +17,7 @@ class User {
         $this->conn = $db;
     }
 
-    function read() {
+    function readAll() {
         $query = "SELECT
                     user_firstname,
                     user_lastname,
@@ -27,6 +27,22 @@ class User {
                     user_pseudo,
                     user_is_admin
                     FROM ". $this->table_name;
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+
+        return $stmt;
+    }
+
+    function readOne($mail, $password) {
+        $query = "SELECT
+                    user_firstname,
+                    user_lastname,
+                    user_id,
+                    user_mail,
+                    user_pseudo,
+                    user_is_admin
+                    FROM ". $this->table_name ." WHERE user_mail = ". $mail ." AND user_password = ". $password;
+        echo $query;
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
 

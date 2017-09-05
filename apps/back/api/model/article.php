@@ -19,7 +19,20 @@ class Article {
         $this->conn = $db;
     }
 
-    function read() {
+    function readAll() {
+        $query = "SELECT
+                    article_id,
+                    article_title,
+                    article_intro,
+                    article_coverpath
+                    FROM ". $this->table_name;
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+
+        return $stmt;
+    }
+
+    function readOne($id) {
         $query = "SELECT
                     article_id,
                     article_title,
@@ -29,8 +42,15 @@ class Article {
                     article_tagslist,
                     article_publicationdate,
                     article_updatedate,
-                    article_coverpath
-                    FROM ". $this->table_name;
+                    article_coverpath,
+                    user_firstname,
+                    user_lastname,
+                    user_id,
+                    user_mail,
+                    user_pseudo,
+                    user_is_admin
+                    FROM ". $this->table_name ." INNER JOIN users ON article_authorid = user_id WHERE article_id = ". $id;
+
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
 

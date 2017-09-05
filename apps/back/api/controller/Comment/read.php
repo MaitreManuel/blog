@@ -11,35 +11,44 @@ $db = $database->getConnection();
 
 $comment = new Comment($db);
 
-$stmt = $comment->read();
-$num = $stmt->rowCount();
+$sql = isset($_POST['sql']) ? $_POST['sql'] : die();
 
-if($num > 0) {
+switch ($sql) {
+    case 'SELECT_Comments':
+        $article_id = isset($_POST['article_id']) ? $_POST['article_id'] : die();
+        $stmt = $comment->readAllFromId($article_id);
+        $num = $stmt->rowCount();
 
-    $comments_arr = array();
-    $comments_arr["records"] = array();
+        if($num > 0) {
 
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        extract($row);
+            $comments_arr = array();
+            $comments_arr["records"] = array();
 
-        $comment_item = array(
-            "comment_id" => $comment_id,
-            "comment_authorid" => $comment_authorid,
-            "comment_articleid" => $comment_articleid,
-            "comment_content" => $comment_content,
-            "comment_title" => $comment_title,
-            "comment_date" => $comment_date
-        );
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                extract($row);
 
-        array_push($comments_arr["records"], $comment_item);
-    }
+                $comment_item = array(
+                    "comment_id" => $comment_id,
+                    "comment_authorid" => $comment_authorid,
+                    "comment_articleid" => $comment_articleid,
+                    "comment_content" => $comment_content,
+                    "comment_title" => $comment_title,
+                    "comment_date" => $comment_date,
+                    "user_firstname" => $user_firstname,
+                    "user_lastname" => $user_lastname
+                );
 
-    echo json_encode($comments_arr);
-}
+                array_push($comments_arr["records"], $comment_item);
+            }
 
-else {
-    echo json_encode(
-        array("message" => "No comments found.")
-    );
+            echo json_encode($comments_arr);
+        }
+
+        else {
+            echo json_encode(
+                array("message" => "No comments found.")
+            );
+        }
+    break;
 }
 ?>

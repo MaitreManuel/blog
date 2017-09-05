@@ -1,6 +1,6 @@
 var React = require("react");
 
-var Footer = React.createClass({
+class Footer extends React.Component {
     render() {
         return (
             <footer id="body-footer" className="container-fluid">
@@ -12,6 +12,6 @@ var Footer = React.createClass({
             </footer>
         );
     }
-});
+}
 
 module.exports = Footer;

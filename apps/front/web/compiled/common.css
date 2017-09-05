@@ -5588,15 +5588,20 @@ article {
   article div.article-entry {
     background-color: #fff; }
     article div.article-entry div.article-content {
+      overflow: hidden;
       padding: 20px 15px; }
       article div.article-entry div.article-content a.more {
         color: #ff5c33;
         font-family: "Nunito Sans";
         text-decoration: underline; }
         article div.article-entry div.article-content a.more:hover {
-          color: #000000; }
-      article div.article-entry div.article-content a, article div.article-entry div.article-content h2, article div.article-entry div.article-content p {
-        height: 10rem; }
+          color: #66ccff; }
+      @media all and (min-width: 992px) {
+        article div.article-entry div.article-content a, article div.article-entry div.article-content h2, article div.article-entry div.article-content p {
+          height: 10rem; } }
+      @media all and (max-width: 576px) {
+        article div.article-entry div.article-content a, article div.article-entry div.article-content h2, article div.article-entry div.article-content p {
+          min-height: 10rem; } }
       article div.article-entry div.article-content a {
         line-height: 25px;
         max-height: 41px;
@@ -5608,20 +5613,31 @@ article {
         color: #ff5c33; }
     article div.article-entry header.img {
       height: 250px; }
+  article .article-page h1, article .article-page h3 {
+    margin-bottom: 2rem;
+    color: #ff5c33; }
+  article .article-page div.img {
+    height: 350px;
+    margin-bottom: 2rem; }
+
+.comment {
+  border: 1px solid #9d9c9c;
+  border-radius: 7px; }
 
 footer#body-footer {
-  bottom: 0;
-  left: 0;
+  margin-top: auto;
   padding: 1rem;
-  position: absolute;
-  right: 0;
   text-align: center; }
+  footer#body-footer p {
+    color: #9d9c9c; }
 
 header#body-header {
   background-color: #66ccff;
-  height: 60px;
+  height: 90px;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem; }
+  header#body-header h2 {
+    line-height: 2; }
   header#body-header .logout {
     color: #fff;
     margin-left: auto;
@@ -5671,15 +5687,17 @@ div#login {
   -webkit-transition: background-color .2s ease-in, color .2s ease-in, fill .2s ease-in;
   transition: background-color .2s ease-in, color .2s ease-in, fill .2s ease-in; }
 
-a.btn, button.btn {
+.btn {
   border-radius: 7px;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
   outline: none;
   padding: 8px 20px; }
-  a.btn.btn-blue, button.btn.btn-blue {
+  .btn.btn-blue {
     background-color: #66ccff;
     border: 1px solid #66ccff;
     color: #fff; }
-    a.btn.btn-blue:active, a.btn.btn-blue:focus, a.btn.btn-blue:hover, button.btn.btn-blue:active, button.btn.btn-blue:focus, button.btn.btn-blue:hover {
+    .btn.btn-blue:active, .btn.btn-blue:focus, .btn.btn-blue:hover {
       background-color: #fff;
       color: #66ccff;
       cursor: pointer; }
@@ -5690,15 +5708,57 @@ input[type="text"] {
   font-size: 1.6rem;
   line-height: 1.5; }
 
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg); } }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+#loader {
+  z-index: 110;
+  position: absolute;
+  top: calc(50vh - 55px);
+  left: calc(50vw - 55px);
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #66ccff;
+  width: 80px;
+  height: 80px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite; }
+
+#overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1003;
+  top: 0;
+  left: 0;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-x: hidden; }
+
 html {
   font-size: 10px; }
 
 body {
-  color: #fff;
   background-color: #f2f2f2;
+  color: #9d9c9c;
+  display: flex;
   font-family: "Nunito Sans", sans-serif;
   font-size: 1.5rem;
-  line-height: 1.5; }
+  line-height: 1.5;
+  min-height: 100vh; }
+  body main#container, body section#Root {
+    display: flex;
+    flex: 1;
+    flex-direction: column; }
 
 a:hover {
   text-decoration: none; }
@@ -5717,23 +5777,28 @@ h2 {
   font-size: 4rem;
   margin-bottom: 2rem; }
 
+@medial all and (max-width: 576px) {
+  h2 {
+    font-size: 3.3rem; } }
+
 h3 {
-  color: #9d9c9c;
+  color: #333333;
   font-size: 3.5rem;
   margin-bottom: 1rem; }
 
 h4 {
-  color: #9d9c9c;
+  color: #333333;
   font-size: 2.3rem;
   font-weight: 300; }
 
 h5 {
-  color: #9d9c9c;
+  color: #333333;
   font-size: 2.3rem;
   font-weight: 300; }
 
 p {
-  color: #9d9c9c; }
+  color: #333333;
+  font-size: 1.6rem; }
 
 .img-fit {
   height: 100%;
