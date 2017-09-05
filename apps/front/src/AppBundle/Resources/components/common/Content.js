@@ -19,7 +19,7 @@ var Content = React.createClass({
     },
 
     render() {
-        if(true) {
+        if(false) {
 			return this.renderNotLog();
 		} else {
 			return this.renderLog();
