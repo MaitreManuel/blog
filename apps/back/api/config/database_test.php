@@ -17,4 +17,10 @@
         echo 'Erreur : '. $e->getMessage();
     }
 
+    $response = $db->query('SELECT * FROM articles');
+
+    while ($datas = $response->fetch()) {
+	       echo '-- '. $datas['article_title'] .' -- ';
+    }
+
 ?>
