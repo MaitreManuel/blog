@@ -30,7 +30,7 @@ class Article {
                     article_publicationdate,
                     article_updatedate,
                     article_coverpath
-                    FROM". $this->table_name;
+                    FROM ". $this->table_name;
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
 

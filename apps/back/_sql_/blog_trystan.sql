@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:8080
--- Généré le :  Mar 05 Septembre 2017 à 10:57
+-- Généré le :  Mar 05 Septembre 2017 à 14:13
 -- Version du serveur :  5.7.19-0ubuntu0.16.04.1
 -- Version de PHP :  7.0.22-0ubuntu0.16.04.1
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `blog`
+-- Base de données :  `blog_trystan`
 --
 
 -- --------------------------------------------------------

@@ -2,7 +2,7 @@
 
     $dblib='mysql';
     $hostname='localhost';
-    $dbname='blog';
+    $dbname='blog_trystan';
 
     $user='root';
     $password='root';

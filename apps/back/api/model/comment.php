@@ -24,7 +24,7 @@ class Comment {
                     comment_content,
                     comment_title,
                     comment_date
-                    FROM". $this->table_name;
+                    FROM ". $this->table_name;
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
 

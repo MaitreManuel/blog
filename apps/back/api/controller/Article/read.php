@@ -3,20 +3,14 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-echo '-- Includes -- ';
-
 include_once '../../config/database.php';
 include_once '../../model/article.php';
-
-echo '-- Database -- ';
 
 $database = new Database();
 $db = $database->getConnection();
 
-echo '-- New Article -- ';
 $article = new Article($db);
 
-echo '-- Read Database Articles -- ';
 $stmt = $article->read();
 $num = $stmt->rowCount();
 

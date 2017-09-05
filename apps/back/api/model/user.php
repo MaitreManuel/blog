@@ -26,7 +26,7 @@ class User {
                     user_password,
                     user_pseudo,
                     user_is_admin
-                    FROM". $this->table_name;
+                    FROM ". $this->table_name;
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
 

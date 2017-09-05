@@ -4,7 +4,7 @@ class Database {
 
     private $db_lib = "mysql";
     private $host = "localhost";
-    private $db_name = "blog";
+    private $db_name = "blog_trystan";
     private $username = "root";
     private $password = "root";
     public $conn;
@@ -14,11 +14,8 @@ class Database {
         $this->conn = null;
 
         try {
-            echo '-- Connection -- ';
-            $this->conn = new PDO($this->$db_lib .":host=". $this->host .";dbname=". $this->db_name, $this->username, $this->password);
-            echo '-- PDO -- ';
+            $this->conn = new PDO($this->db_lib .":host=". $this->host .";dbname=". $this->db_name, $this->username, $this->password);
             $this->conn->exec("SET NAMES utf8");
-            echo '-- Success -- ';
         } catch(PDOException $exception) {
             echo "Connection error: " . $exception->getMessage();
         }
