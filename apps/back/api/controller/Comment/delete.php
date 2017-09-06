@@ -14,22 +14,19 @@ $db = $database->getConnection();
 
 $comment = new Comment($db);
 
-$comment_articleid = isset($_POST['comment_articleid']) ? $_POST['comment_articleid'] : die();
+$comment_id = isset($_POST['comment_id']) ? $_POST['comment_id'] : die();
 $comment_authorid = isset($_POST['comment_authorid']) ? $_POST['comment_authorid'] : die();
 
-$stmt = $comment->delete($comment_authorid, $comment_articleid);
+$stmt = $comment->delete($comment_id, $comment_authorid);
 
-// delete the product
-if($product->delete()){
+if($stmt == true) {
     echo '{';
-        echo '"message": "Product was deleted."';
+        echo '"message": "Comment was deleted."';
+    echo '}';
+} else{
+    echo '{';
+        echo '"message": "Unable to delete comment."';
     echo '}';
 }
 
-// if unable to delete the product
-else{
-    echo '{';
-        echo '"message": "Unable to delete object."';
-    echo '}';
-}
 ?>

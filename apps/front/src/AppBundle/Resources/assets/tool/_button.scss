@@ -4,7 +4,9 @@
     margin-top: 1.5rem;
     outline: none;
     padding: 8px 20px;
-
+    &:active, &:focus, &:hover {
+        cursor: pointer;
+    }
     &.btn-blue {
         background-color: $primary_blue;
         border: 1px solid $primary_blue;
@@ -12,7 +14,15 @@
         &:active, &:focus, &:hover {
             background-color: $primary_white;
             color: $primary_blue;
-            cursor: pointer;
+        }
+    }
+    &.btn-grey {
+        background-color: $dark_grey;
+        border: 1px solid $dark_grey;
+        color: $primary_white;
+        &:active, &:focus, &:hover {
+            background-color: $primary_white;
+            color: $dark_grey;
         }
     }
 }

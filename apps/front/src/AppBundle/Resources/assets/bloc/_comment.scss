@@ -23,6 +23,21 @@
     }
     .comment {
         padding: 0 30px;
+        .wrap {
+            background-color: $primary_white;
+            border-radius: 7px;
+            padding: 10px;
+            position: relative;
+            i {
+                cursor: pointer;
+                position: absolute;
+                right: 10px;
+                top: 5px;
+                &:hover {
+                    color: $dark_grey;
+                }
+            }
+        }
     }
     .need-connect {
         margin-top: 2.5rem;

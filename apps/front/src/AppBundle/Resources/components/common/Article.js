@@ -15,6 +15,8 @@ class Article extends React.Component {
         };
 
         this.updateComment = this.updateComment.bind(this);
+        this.confirmModal = this.confirmModal.bind(this);
+        this.deleteComment = this.deleteComment.bind(this);
         this.getArticle = this.getArticle.bind(this);
         this.getComments = this.getComments.bind(this);
         this.openList = this.openList.bind(this);
@@ -37,6 +39,59 @@ class Article extends React.Component {
             document.getElementById("nbCar").style.color = "#333333";
         }
         this.setState(state);
+    }
+
+    // unset confirm modal
+    closeConfirmModal() {
+        localStorage.removeItem('comment_id');
+        var title = document.getElementById('text-title-modal'),
+            message = document.getElementById("message-content-modal"),
+            modal = document.getElementById("confirm-modal");
+
+        modal.style.visibility = 'hidden';
+        modal.style.opacity = '0';
+        message.innerHTML = "";
+        title.innerHTML = "";
+    }
+
+    // set confirm modal
+    confirmModal(comment_id) {
+        localStorage.setItem('comment_id', comment_id);
+        var me = this,
+            state = me.state,
+            title = document.getElementById('text-title-modal'),
+            message = document.getElementById('message-content-modal'),
+            modal = document.getElementById('confirm-modal');
+
+        title.innerHTML = "Confirmer suppression ?";
+        modal.style.visibility = 'visible';
+        modal.style.opacity = '1';
+        message.innerHTML = "Voulez-vous vraiment supprimmer ce commentaire ?";
+    }
+
+    deleteComment() {
+        var me = this,
+            comment_id = localStorage.getItem('comment_id'),
+            comment_authorid = localStorage.getItem('user_id');
+
+        $.ajax({
+            url: 'http://localhost/blog/apps/back/api/controller' +'/Comment/delete.php',
+            type: "POST",
+            data: {
+                comment_id: comment_id,
+                comment_authorid: comment_authorid
+            },
+            success: function(response) {
+                me.getComments();
+                me.closeConfirmModal()
+            },
+            error: function(error) {
+                console.log(error);
+            },
+            complete: function() {
+                console.log('request done');
+            }
+        });
     }
 
     // use to get all articles from the server
@@ -130,7 +185,8 @@ class Article extends React.Component {
                     console.log("Pas de commentaires");
                 } else {
                     for(var i = 0; i < response.length; i++) {
-                        let comment_title = response[i].comment_title === "" ? "Pas de titre" : response[i].comment_title,
+                        let comment_id = response[i].comment_id === "" ? "Pas d'identifiant" : response[i].comment_id,
+                            comment_title = response[i].comment_title === "" ? "Pas de titre" : response[i].comment_title,
                             comment_content = response[i].comment_content === "" ? "Pas de titre" : response[i].comment_content,
                             comment_date = response[i].comment_date === "" ? "Pas de titre" : response[i].comment_date,
                             user_firstname = response[i].user_firstname === "" ? "Pas de prénom" : response[i].user_firstname,
@@ -139,11 +195,14 @@ class Article extends React.Component {
                         comments.push(
                             <div className="row justify-content-center" key={"comment"+ i}>
                                 <div className="col-12 col-lg-9 comment">
-                                    <header>
-                                        <p>{user_firstname +" "+ user_lastname +" "+ comment_date}</p>
-                                    </header>
-                                    <div className="content">
-                                        <p>{comment_content}</p>
+                                    <div className="wrap">
+                                        <header>
+                                            <p>{user_firstname +" "+ user_lastname +" "+ comment_date}</p>
+                                        </header>
+                                        <div className="content">
+                                            <p>{comment_content}</p>
+                                        </div>
+                                        <i onClick={ () => me.confirmModal(comment_id) } className="fa fa-close fadein" aria-hidden="true"></i>
                                     </div>
                                 </div>
                             </div>
@@ -217,6 +276,22 @@ class Article extends React.Component {
 
         return (
             <div id="article">
+                <div id="confirm-modal">
+                    <div className="container-modal">
+                        <div className="title-modal">
+                            <h3 id="text-title-modal"></h3>
+                            <i onClick={this.closeConfirmModal} className="fa fa-close fa-3x close-modal goright fadein" aria-hidden="true"></i>
+                        </div>
+                        <div className="content-modal">
+                            <span id="message-content-modal"></span>
+                        </div>
+                        <div className="footer-modal">
+                            <button onClick={this.closeConfirmModal} className="btn btn-grey fadein">Annuler</button>
+                            <button onClick={this.deleteComment} className="btn btn-blue fadein">Supprimer</button>
+                        </div>
+                    </div>
+                </div>
+
                 <section className="container-fluid">
                     <div className="row">
                         <div className="col-11">

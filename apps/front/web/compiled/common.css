@@ -5641,6 +5641,18 @@ article {
     margin-top: 2rem; }
   .comments-space .comment {
     padding: 0 30px; }
+    .comments-space .comment .wrap {
+      background-color: #fff;
+      border-radius: 7px;
+      padding: 10px;
+      position: relative; }
+      .comments-space .comment .wrap i {
+        cursor: pointer;
+        position: absolute;
+        right: 10px;
+        top: 5px; }
+        .comments-space .comment .wrap i:hover {
+          color: #333333; }
   .comments-space .need-connect {
     margin-top: 2.5rem; }
     .comments-space .need-connect p {
@@ -5789,20 +5801,76 @@ div#login {
   margin-top: 1.5rem;
   outline: none;
   padding: 8px 20px; }
+  .btn:active, .btn:focus, .btn:hover {
+    cursor: pointer; }
   .btn.btn-blue {
     background-color: #66ccff;
     border: 1px solid #66ccff;
     color: #fff; }
     .btn.btn-blue:active, .btn.btn-blue:focus, .btn.btn-blue:hover {
       background-color: #fff;
-      color: #66ccff;
-      cursor: pointer; }
+      color: #66ccff; }
+  .btn.btn-grey {
+    background-color: #333333;
+    border: 1px solid #333333;
+    color: #fff; }
+    .btn.btn-grey:active, .btn.btn-grey:focus, .btn.btn-grey:hover {
+      background-color: #fff;
+      color: #333333; }
 
 input[type="email"],
 input[type="password"],
 input[type="text"] {
   font-size: 1.6rem;
   line-height: 1.5; }
+
+#confirm-modal {
+  background-color: rgba(0, 0, 0, 0.9);
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: 11;
+  -webkit-transition: visibility 0s, opacity 0.3s linear;
+  transition: visibility 0s, opacity 0.3s linear; }
+  #confirm-modal .container-modal {
+    background-color: white;
+    border-radius: 3px;
+    color: #333333;
+    height: 200px;
+    left: 50%;
+    margin: 0 20px;
+    transform: translate(-50%, -50%);
+    padding: 1px 10px 5px 20px;
+    position: relative;
+    top: 50%;
+    width: 50%; }
+    @media all and (max-width: 576px) {
+      #confirm-modal .container-modal {
+        margin: 0;
+        width: 100%; }
+        #confirm-modal .container-modal h3 {
+          font-size: 2.2rem; } }
+    #confirm-modal .container-modal .content-modal {
+      margin: 35px 0 0 0; }
+    #confirm-modal .container-modal .footer-modal {
+      bottom: 10px;
+      position: absolute;
+      right: 10px; }
+      #confirm-modal .container-modal .footer-modal button {
+        margin: 10px 5px 0 5px; }
+    #confirm-modal .container-modal .title-modal h3 {
+      margin: 10px 0 10px 0; }
+    #confirm-modal .container-modal .title-modal .close-modal {
+      color: #9d9c9c;
+      cursor: pointer;
+      font-size: 30px;
+      right: 10px;
+      position: absolute;
+      top: 5px; }
 
 html {
   font-size: 10px; }

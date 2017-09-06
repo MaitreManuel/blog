@@ -51,6 +51,19 @@ class Comment {
             return false;
         }
     }
+
+    function delete($comment_id, $comment_authorid) {
+        $query = "DELETE FROM " . $this->table_name . " WHERE comment_id = ". $comment_id ."
+                    AND comment_authorid = ". $comment_authorid;
+
+        $stmt = $this->conn->prepare($query);
+
+        if($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 ?>

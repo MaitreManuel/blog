@@ -1,0 +1,58 @@
+#confirm-modal {
+    background-color: rgba(0, 0, 0, 0.9);
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    visibility: hidden;
+    width: 100%;
+    z-index: 11;
+    -webkit-transition: visibility 0s, opacity 0.3s linear;
+    transition: visibility 0s, opacity 0.3s linear;
+
+    .container-modal {
+        background-color: white;
+        border-radius: 3px;
+        color: $dark_grey;
+        height: 200px;
+        left: 50%;
+        margin: 0 20px;
+        transform: translate(-50%, -50%);
+        padding: 1px 10px 5px 20px;
+        position: relative;
+        top: 50%;
+        width: 50%;
+        @media all and (max-width: 576px) {
+            margin: 0;
+            width: 100%;
+            h3 {
+                font-size: 2.2rem;
+            }
+        }
+        .content-modal {
+            margin: 35px 0 0 0;
+        }
+        .footer-modal {
+            bottom: 10px;
+            position: absolute;
+            right: 10px;
+            button {
+                margin: 10px 5px 0 5px;
+            }
+        }
+        .title-modal {
+            h3 {
+                margin: 10px 0 10px 0;
+            }
+            .close-modal {
+                color: $medium_grey;
+                cursor: pointer;
+                font-size: 30px;
+                right: 10px;
+                position: absolute;
+                top: 5px;
+            }
+        }
+    }
+}
