@@ -46,9 +46,17 @@ article {
             margin-bottom: 2rem;
             color: $primary_red;
         }
+        h5 {
+            margin-top: 3rem;
+        }
+        header {
+            p {
+                margin-bottom: 3rem;
+            }
+        }
         div.img {
             height: 350px;
-            margin-bottom: 2rem;
+            margin-bottom: 4rem;
         }
     }
 }
