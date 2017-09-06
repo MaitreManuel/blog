@@ -8,10 +8,10 @@ const resources = path.resolve(__dirname, 'src/AppBundle/Resources');
 const config = {
   cache: true,
   entry: {
+    application: './src/AppBundle/Resources/application.js',
     common:[
       './src/AppBundle/Resources/assets/common.js',
     ],
-    application: './src/AppBundle/Resources/application.js',
   },
   output: {
     library: '[name]', // assets build

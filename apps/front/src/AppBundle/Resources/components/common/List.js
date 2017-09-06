@@ -43,15 +43,16 @@ class List extends React.Component {
                             article_coverpath = response[i].article_coverpath === "" ? "http://ccwc.org/wp-content/themes/ccwc-theme/images/no-image-available.png" : response[i].article_coverpath;
 
                         articles.push(
-                            <article className="col-12 col-lg-6" key={"article"+ i}>
-                                <div className="article-entry">
-                                    <header className="img">
-                                        <img src={article_coverpath} alt="Test" className="img-fit img-fit-cover" />
-                                    </header>
-                                    <div className="article-content">
-                                        <h2>{article_title}</h2>
-                                        <p>{article_intro}</p>
-                                        <a onClick={() => me.openArticle(article_id)} className="more fadein" href="javascript:void(0)">Lire l&#039;article</a>
+                            <article onClick={() => me.openArticle(article_id)} className="col-12 col-lg-6 col-xl-4" key={"article"+ i}>
+                                <div className="wrap-article">
+                                    <div className="article-entry">
+                                        <header className="img">
+                                            <img src={article_coverpath} alt="Test" className="img-fit img-fit-cover" />
+                                        </header>
+                                        <div className="article-content">
+                                            <h2>{article_title}</h2>
+                                            <p>{article_intro}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </article>
@@ -83,7 +84,7 @@ class List extends React.Component {
         return (
             <div id="list">
                 <section className="container-fluid">
-                    <header className="row justify-content-center">
+                    <header className="row justify-content-center h-list">
                         <div className="col-11 col-md-2 title">
                             <h3>Articles</h3>
                         </div>
@@ -101,7 +102,7 @@ class List extends React.Component {
                 </section>
                 <section className="container-fluid">
                     <div className="row justify-content-center">
-                        <div className="col-12 col-lg-11 col-xl-9">
+                        <div className="col-12 col-xl-11">
                             <div className="row">
                                 {articles}
                             </div>

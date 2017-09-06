@@ -5586,7 +5586,8 @@ article {
     article {
       padding: 15px 0; } }
   article div.article-entry {
-    background-color: #fff; }
+    background-color: #fff;
+    cursor: pointer; }
     article div.article-entry div.article-content {
       overflow: hidden;
       padding: 20px 15px; }
@@ -5623,24 +5624,37 @@ article {
   article .article-page div.img {
     height: 350px;
     margin-bottom: 4rem; }
+  article .wrap-article {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    overflow: hidden;
+    -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+    article .wrap-article:hover {
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); }
+    article .wrap-article .article-entry {
+      -webkit-transition: transform .3s;
+      transition: transform .3s; }
+      article .wrap-article .article-entry:hover {
+        -webkit-transform: scale(1.02);
+        transform: scale(1.05); }
 
 .comments-space {
   margin-bottom: 5rem;
   margin-top: 5rem; }
+  .comments-space textarea {
+    border-radius: 3px;
+    height: 110px;
+    outline: none;
+    padding: 10px;
+    resize: none;
+    width: 100%; }
+    @media all and (max-width: 576px) {
+      .comments-space textarea {
+        height: 310px; } }
   .comments-space .add-comment {
     padding: 20px 30px 0; }
     .comments-space .add-comment p {
       font-size: 1.8rem; }
-    .comments-space .add-comment textarea {
-      border-radius: 3px;
-      height: 110px;
-      outline: none;
-      padding: 10px;
-      resize: none;
-      width: 100%; }
-      @media all and (max-width: 576px) {
-        .comments-space .add-comment textarea {
-          height: 310px; } }
   .comments-space .comment, .comments-space .no-comment {
     margin-top: 2rem; }
   .comments-space .comment {
@@ -5653,10 +5667,15 @@ article {
       .comments-space .comment .wrap i {
         cursor: pointer;
         position: absolute;
-        right: 10px;
         top: 5px; }
+        .comments-space .comment .wrap i:first-child {
+          right: 30px; }
+        .comments-space .comment .wrap i:nth-child(2) {
+          right: 10px; }
         .comments-space .comment .wrap i:hover {
           color: #333333; }
+      .comments-space .comment .wrap p {
+        word-break: break-word; }
   .comments-space .need-connect {
     margin-top: 2.5rem; }
     .comments-space .need-connect p {
@@ -5694,13 +5713,13 @@ header#body-header {
 div#list {
   padding-bottom: 25px;
   padding-top: 25px; }
-  div#list header {
+  div#list header.h-list {
     margin-bottom: 3rem; }
     @media all and (min-width: 577px) {
-      div#list header {
+      div#list header.h-list {
         margin-top: 2rem; } }
     @media all and (max-width: 576px) {
-      div#list header .title {
+      div#list header.h-list .title {
         text-align: center; } }
 
 div#login {
@@ -5748,6 +5767,17 @@ div#login {
   div#login .wrap {
     height: 100%;
     position: relative; }
+
+div#body-preheader {
+  background-image: url(bb3076df91f71d2905482abb4cfc3f4d.jpg);
+  background-attachment: fixed;
+  background-position: top center;
+  background-size: cover;
+  height: 150px; }
+  div#body-preheader .wrap {
+    background-color: rgba(255, 255, 255, 0.7);
+    height: 100%;
+    width: 100%; }
 
 .share {
   text-align: right; }

@@ -3,6 +3,7 @@ var React = require("react");
 var Content = require("./common/Content.js");
 var Footer = require("./common/Footer.js");
 var Header = require("./common/Header.js");
+var PreHeader = require("./common/PreHeader.js");
 
 class Root extends React.Component {
     constructor() {
@@ -24,6 +25,7 @@ class Root extends React.Component {
     render() {
         return (
             <section id="Root">
+                <PreHeader/>
                 <Header/>
                 <Content reload={this.reload}/>
                 <Footer />

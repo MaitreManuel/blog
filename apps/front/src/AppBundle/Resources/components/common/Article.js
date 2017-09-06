@@ -10,13 +10,13 @@ class Article extends React.Component {
             comment: "",
             comments: [],
             logged: localStorage.getItem('logged'),
-            nbCar: 0,
             nbComments: 0,
         };
 
         this.updateComment = this.updateComment.bind(this);
         this.confirmModal = this.confirmModal.bind(this);
         this.deleteComment = this.deleteComment.bind(this);
+        this.editComment = this.editComment.bind(this);
         this.getArticle = this.getArticle.bind(this);
         this.getComments = this.getComments.bind(this);
         this.openList = this.openList.bind(this);
@@ -33,11 +33,6 @@ class Article extends React.Component {
         var state = this.state;
         state.comment = event.target.value;
         state.nbCar = state.comment.length;
-        if(state.nbCar > 140) {
-            document.getElementById("nbCar").style.color = "red";
-        } else {
-            document.getElementById("nbCar").style.color = "#333333";
-        }
         this.setState(state);
     }
 
@@ -67,6 +62,10 @@ class Article extends React.Component {
         modal.style.visibility = 'visible';
         modal.style.opacity = '1';
         message.innerHTML = "Voulez-vous vraiment supprimmer ce commentaire ?";
+    }
+
+    editComment(comment_id) {
+        console.log(comment_id);
     }
 
     deleteComment() {
@@ -188,7 +187,8 @@ class Article extends React.Component {
                         let comment_id = response[i].comment_id === "" ? "Pas d'identifiant" : response[i].comment_id,
                             comment_title = response[i].comment_title === "" ? "Pas de titre" : response[i].comment_title,
                             comment_content = response[i].comment_content === "" ? "Pas de titre" : response[i].comment_content,
-                            comment_date = response[i].comment_date === "" ? "Pas de titre" : response[i].comment_date,
+                            comment_authorid = response[i].comment_authorid === "" ? "Pas de d'identifiant d'auteur" : response[i].comment_authorid,
+                            comment_date = response[i].comment_date === "" ? "Pas de date" : response[i].comment_date,
                             user_firstname = response[i].user_firstname === "" ? "Pas de prénom" : response[i].user_firstname,
                             user_lastname = response[i].user_lastname === "" ? "Pas de nom" : response[i].user_lastname;
 
@@ -201,8 +201,16 @@ class Article extends React.Component {
                                         </header>
                                         <div className="content">
                                             <p>{comment_content}</p>
+                                            <div className="edit-mode">
+                                                <textarea onInput={this.updateComment} className="lit-textbox" name="comment" defaultValue={comment_content} placeholder="Editer votre commentaire ici..."></textarea>
+                                            </div>
                                         </div>
-                                        <i onClick={ () => me.confirmModal(comment_id) } className="fa fa-close fadein" aria-hidden="true"></i>
+                                        { comment_authorid === localStorage.getItem('user_id') &&
+                                            <div className="wrap-opts">
+                                                <i onClick={ () => me.editComment(comment_id) } className="fa fa-pencil fadein" aria-hidden="true"></i>
+                                                <i onClick={ () => me.confirmModal(comment_id) } className="fa fa-close fadein" aria-hidden="true"></i>
+                                            </div>
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -324,7 +332,6 @@ class Article extends React.Component {
                                         <div className="col-12 col-lg-9 add-comment">
                                             <p>Ajouter un commentaire</p>
                                             <textarea onInput={this.updateComment} id="comment" name="comment" placeholder="Taper votre commentaire ici..."></textarea>
-                                            <p id="nbCar">{nbCar} / 140 caratères</p>
                                         </div>
                                     </div>
                                     <div className="row justify-content-center">
