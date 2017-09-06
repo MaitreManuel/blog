@@ -1338,16 +1338,6 @@ module.exports = ReactUpdates;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-
-module.exports = __webpack_require__(16);
-
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -1613,6 +1603,16 @@ function getPooledWarningPropertyDefinition(propName, getVal) {
     undefined !== 'production' ? warning(warningCondition, "This synthetic event is reused for performance reasons. If you're seeing this, " + "you're %s `%s` on a released/nullified synthetic event. %s. " + 'If you must keep the original synthetic event around, use event.persist(). ' + 'See https://fb.me/react-event-pooling for more information.', action, propName, result) : void 0;
   }
 }
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = __webpack_require__(16);
+
 
 /***/ }),
 /* 13 */
@@ -3201,7 +3201,7 @@ module.exports = EventPluginHub;
 
 
 
-var SyntheticEvent = __webpack_require__(12);
+var SyntheticEvent = __webpack_require__(11);
 
 var getEventTarget = __webpack_require__(36);
 
@@ -19981,7 +19981,7 @@ module.exports = getHostComponentFromComposite;
 /* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var React = __webpack_require__(11);
+var React = __webpack_require__(12);
 var ReactDOM = __webpack_require__(102);
 
 var Root = __webpack_require__(188);
@@ -23247,7 +23247,7 @@ module.exports = FallbackCompositionState;
 
 
 
-var SyntheticEvent = __webpack_require__(12);
+var SyntheticEvent = __webpack_require__(11);
 
 /**
  * @interface Event
@@ -23288,7 +23288,7 @@ module.exports = SyntheticCompositionEvent;
 
 
 
-var SyntheticEvent = __webpack_require__(12);
+var SyntheticEvent = __webpack_require__(11);
 
 /**
  * @interface Event
@@ -23335,7 +23335,7 @@ var EventPropagators = __webpack_require__(20);
 var ExecutionEnvironment = __webpack_require__(5);
 var ReactDOMComponentTree = __webpack_require__(4);
 var ReactUpdates = __webpack_require__(10);
-var SyntheticEvent = __webpack_require__(12);
+var SyntheticEvent = __webpack_require__(11);
 
 var inputValueTracking = __webpack_require__(64);
 var getEventTarget = __webpack_require__(36);
@@ -31116,7 +31116,7 @@ var EventPropagators = __webpack_require__(20);
 var ExecutionEnvironment = __webpack_require__(5);
 var ReactDOMComponentTree = __webpack_require__(4);
 var ReactInputSelection = __webpack_require__(79);
-var SyntheticEvent = __webpack_require__(12);
+var SyntheticEvent = __webpack_require__(11);
 
 var getActiveElement = __webpack_require__(80);
 var isTextInputElement = __webpack_require__(65);
@@ -31313,7 +31313,7 @@ var EventPropagators = __webpack_require__(20);
 var ReactDOMComponentTree = __webpack_require__(4);
 var SyntheticAnimationEvent = __webpack_require__(169);
 var SyntheticClipboardEvent = __webpack_require__(170);
-var SyntheticEvent = __webpack_require__(12);
+var SyntheticEvent = __webpack_require__(11);
 var SyntheticFocusEvent = __webpack_require__(171);
 var SyntheticKeyboardEvent = __webpack_require__(172);
 var SyntheticMouseEvent = __webpack_require__(29);
@@ -31536,7 +31536,7 @@ module.exports = SimpleEventPlugin;
 
 
 
-var SyntheticEvent = __webpack_require__(12);
+var SyntheticEvent = __webpack_require__(11);
 
 /**
  * @interface Event
@@ -31580,7 +31580,7 @@ module.exports = SyntheticAnimationEvent;
 
 
 
-var SyntheticEvent = __webpack_require__(12);
+var SyntheticEvent = __webpack_require__(11);
 
 /**
  * @interface Event
@@ -31961,7 +31961,7 @@ module.exports = SyntheticTouchEvent;
 
 
 
-var SyntheticEvent = __webpack_require__(12);
+var SyntheticEvent = __webpack_require__(11);
 
 /**
  * @interface Event
@@ -32582,15 +32582,31 @@ module.exports = ReactDOMInvalidARIAHook;
 /* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var React = __webpack_require__(11);
+var React = __webpack_require__(12);
 
 var Content = __webpack_require__(189);
 var Footer = __webpack_require__(193);
 var Header = __webpack_require__(194);
 
 class Root extends React.Component {
+    constructor() {
+        super();
+
+        this.state = {
+            action: localStorage.getItem('logged')
+        };
+
+        this.reload = this.reload.bind(this);
+    }
+
+    reload() {
+        var state = this.state;
+        state.action = localStorage.getItem('logged');
+        this.setState(state);
+    }
+
     render() {
-        return React.createElement("section", { id: "Root" }, React.createElement(Header, null), React.createElement(Content, null), React.createElement(Footer, null));
+        return React.createElement("section", { id: "Root" }, React.createElement(Header, null), React.createElement(Content, { reload: this.reload }), React.createElement(Footer, null));
     }
 }
 
@@ -32600,7 +32616,7 @@ module.exports = Root;
 /* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var React = __webpack_require__(11);
+var React = __webpack_require__(12);
 
 var Article = __webpack_require__(190);
 var List = __webpack_require__(191);
@@ -32637,8 +32653,9 @@ class Content extends React.Component {
     // props use to refresh component when user is logging
     validate() {
         var state = this.state;
-        state.logged = localStorage.getItem('logged');
+        state.want_log = localStorage.getItem('want_log');
         this.setState(state);
+        this.props.reload();
     }
 
     // if user is logged, then return to App login page
@@ -32656,7 +32673,7 @@ class Content extends React.Component {
     }
 
     render() {
-        if (this.state.want_log === true) {
+        if (this.state.want_log === "true") {
             return this.renderToLog();
         } else {
             return this.renderHome();
@@ -32670,7 +32687,7 @@ module.exports = Content;
 /* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {var React = __webpack_require__(11);
+/* WEBPACK VAR INJECTION */(function($) {var React = __webpack_require__(12);
 
 class Article extends React.Component {
     constructor() {
@@ -32678,19 +32695,37 @@ class Article extends React.Component {
 
         this.state = {
             article: [],
+            article_id: localStorage.getItem('article_id'),
+            comment: "",
             comments: [],
-            nbComments: 0,
-            article_id: localStorage.getItem('article_id')
+            logged: localStorage.getItem('logged'),
+            nbCar: 0,
+            nbComments: 0
         };
 
+        this.updateComment = this.updateComment.bind(this);
         this.getArticle = this.getArticle.bind(this);
         this.getComments = this.getComments.bind(this);
         this.openList = this.openList.bind(this);
+        this.sendComment = this.sendComment.bind(this);
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0);
         this.getArticle();
         this.getComments();
+    }
+
+    updateComment(event) {
+        var state = this.state;
+        state.comment = event.target.value;
+        state.nbCar = state.comment.length;
+        if (state.nbCar > 140) {
+            document.getElementById("nbCar").style.color = "red";
+        } else {
+            document.getElementById("nbCar").style.color = "#333333";
+        }
+        this.setState(state);
     }
 
     // use to get all articles from the server
@@ -32730,7 +32765,7 @@ class Article extends React.Component {
                         user_pseudo = response.user_pseudo === "" ? "Pas de pseudo" : response.user_pseudo,
                         user_is_admin = response.user_is_admin === "" ? "Pas de statut admin" : response.user_is_admin;
 
-                    article.push(React.createElement('div', { className: 'article-page', key: "article" + article_id }, React.createElement('header', null, React.createElement('h1', null, article_title), React.createElement('p', null, article_intro), React.createElement('div', { className: 'img' }, React.createElement('img', { src: article_coverpath, alt: 'Test', className: 'img-fit img-fit-cover' }))), React.createElement('div', { className: 'row justify-content-center' }, React.createElement('div', { className: 'col-9' }, React.createElement('p', null, article_content), React.createElement('h5', null, 'Auteur - ', user_firstname, ' ', user_lastname)))));
+                    article.push(React.createElement("div", { className: "article-page", key: "article" + article_id }, React.createElement("header", null, React.createElement("h1", null, article_title), React.createElement("p", null, article_intro), React.createElement("div", { className: "img" }, React.createElement("img", { src: article_coverpath, alt: "Test", className: "img-fit img-fit-cover" }))), React.createElement("div", { className: "row justify-content-center" }, React.createElement("div", { className: "col-12 col-lg-9" }, React.createElement("p", null, article_content), React.createElement("h5", { className: "text-right" }, "Auteur - ", user_firstname, " ", user_lastname)))));
                     // then set to the store and render use this to create his
                     // list
                     me.setState({ article: article });
@@ -32767,8 +32802,6 @@ class Article extends React.Component {
                 if (response.message) {
                     console.log("Pas de commentaires");
                 } else {
-                    console.log(response.length);
-                    console.log(response);
                     for (var i = 0; i < response.length; i++) {
                         let comment_title = response[i].comment_title === "" ? "Pas de titre" : response[i].comment_title,
                             comment_content = response[i].comment_content === "" ? "Pas de titre" : response[i].comment_content,
@@ -32776,7 +32809,7 @@ class Article extends React.Component {
                             user_firstname = response[i].user_firstname === "" ? "Pas de prénom" : response[i].user_firstname,
                             user_lastname = response[i].user_lastname === "" ? "Pas de nom" : response[i].user_lastname;
 
-                        comments.push(React.createElement('div', { className: 'row justify-content-center', key: "comment" + i }, React.createElement('div', { className: 'col-9 comment' }, React.createElement('header', null, React.createElement('p', null, user_firstname + " " + user_lastname + " " + comment_date)), React.createElement('div', { className: 'content' }, React.createElement('p', null, comment_content)))));
+                        comments.push(React.createElement("div", { className: "row justify-content-center", key: "comment" + i }, React.createElement("div", { className: "col-12 col-lg-9 comment" }, React.createElement("header", null, React.createElement("p", null, user_firstname + " " + user_lastname + " " + comment_date)), React.createElement("div", { className: "content" }, React.createElement("p", null, comment_content)))));
                     }
                     // // then set to the store and render use this to create his
                     // // list
@@ -32797,13 +32830,54 @@ class Article extends React.Component {
         this.props.openList();
     }
 
+    sendComment() {
+        var me = this,
+            comment = document.getElementById("comment"),
+            comment_content = me.state.comment,
+            comment_articleid = localStorage.getItem('article_id'),
+            comment_authorid = localStorage.getItem('user_id');
+
+        if (comment_content === "") {
+            comment.style.borderColor = "red";
+            console.log("Pas de commentaire");
+        } else {
+            comment.style.borderColor = "green";
+
+            $.ajax({
+                url: 'http://localhost/blog/apps/back/api/controller' + '/Comment/create.php',
+                type: "POST",
+                data: {
+                    comment_content: comment_content,
+                    comment_articleid: comment_articleid,
+                    comment_authorid: comment_authorid
+                },
+                success: function (response) {
+                    var response = response.records === undefined ? response : response.records[0];
+
+                    comment.value = "";
+                    comment.removeAttribute('style');
+                    me.getComments();
+                },
+                error: function (error) {
+                    console.log(error);
+                },
+                complete: function () {
+                    console.log('request done');
+                }
+            });
+        }
+    }
+
     render() {
         var me = this,
-            article = me.state.article,
-            comments = me.state.comments,
-            nbComments = me.state.nbComments;
+            state = me.state,
+            article = state.article,
+            comments = state.comments,
+            logged = state.logged,
+            nbCar = state.nbCar,
+            nbComments = state.nbComments;
 
-        return React.createElement('div', { id: 'article' }, React.createElement('section', { className: 'container-fluid' }, React.createElement('div', { className: 'row' }, React.createElement('div', { className: 'col-11' }, React.createElement('button', { onClick: this.openList, className: 'btn btn-blue fadein' }, React.createElement('i', { className: 'fa fa-long-arrow-left', 'aria-hidden': 'true' }), ' Retour \xE0 la liste'))), React.createElement('div', { className: 'row justify-content-center' }, React.createElement('article', { className: 'col-10' }, article)), React.createElement('div', { className: 'row justify-content-center comments-space' }, React.createElement('div', { className: 'col-10' }, React.createElement('div', { className: 'row justify-content-center' }, React.createElement('div', { className: 'col-9' }, React.createElement('h3', null, 'Commentaires'))), nbComments > 0 && comments, nbComments <= 0 && React.createElement('div', { className: 'row justify-content-center no-comment' }, React.createElement('div', { className: 'col-10 text-center' }, React.createElement('h5', null, 'Pas de commentaires')))))));
+        return React.createElement("div", { id: "article" }, React.createElement("section", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-11" }, React.createElement("button", { onClick: this.openList, className: "btn btn-blue fadein" }, React.createElement("i", { className: "fa fa-long-arrow-left", "aria-hidden": "true" }), " Retour \xE0 la liste"))), React.createElement("div", { className: "row justify-content-center" }, React.createElement("article", { className: "col-11 col-lg-10" }, article)), React.createElement("div", { className: "row justify-content-center comments-space" }, React.createElement("div", { className: "col-11 col-lg-10" }, React.createElement("div", { className: "row justify-content-center" }, React.createElement("div", { className: "col-12 col-lg-9" }, React.createElement("h3", null, "Commentaires"))), nbComments > 0 && comments, nbComments <= 0 && React.createElement("div", { className: "row justify-content-center no-comment" }, React.createElement("div", { className: "col-12 col-lg-10 text-center" }, React.createElement("h5", null, "Pas de commentaires"))), logged === "true" && React.createElement("div", { className: "wrap" }, React.createElement("div", { className: "row justify-content-center" }, React.createElement("div", { className: "col-12 col-lg-9 add-comment" }, React.createElement("p", null, "Ajouter un commentaire"), React.createElement("textarea", { onInput: this.updateComment, id: "comment", name: "comment", placeholder: "Taper votre commentaire ici..." }), React.createElement("p", { id: "nbCar" }, nbCar, " / 140 carat\xE8res"))), React.createElement("div", { className: "row justify-content-center" }, React.createElement("div", { className: "col-12 col-lg-9 text-right send" }, React.createElement("button", { onClick: this.sendComment, className: "btn btn-blue fadein" }, "Envoyer")))), logged !== "true" && React.createElement("div", { className: "row justify-content-center" }, React.createElement("div", { className: "col-12 col-lg-9 text-center need-connect" }, React.createElement("p", null, "Connectez-vous pour ajouter un commentaire")))))));
     }
 }
 
@@ -32814,7 +32888,7 @@ module.exports = Article;
 /* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {var React = __webpack_require__(11);
+/* WEBPACK VAR INJECTION */(function($) {var React = __webpack_require__(12);
 
 class List extends React.Component {
     constructor() {
@@ -32858,7 +32932,7 @@ class List extends React.Component {
                             article_intro = response[i].article_intro === "" ? "Pas d'introduction" : response[i].article_intro,
                             article_coverpath = response[i].article_coverpath === "" ? "http://ccwc.org/wp-content/themes/ccwc-theme/images/no-image-available.png" : response[i].article_coverpath;
 
-                        articles.push(React.createElement('article', { className: 'col-12 col-lg-6', key: "article" + i }, React.createElement('div', { className: 'article-entry' }, React.createElement('header', { className: 'img' }, React.createElement('img', { src: article_coverpath, alt: 'Test', className: 'img-fit img-fit-cover' })), React.createElement('div', { className: 'article-content' }, React.createElement('h2', null, article_title), React.createElement('p', null, article_intro), React.createElement('a', { onClick: () => me.openArticle(article_id), className: 'more fadein', href: '#' }, 'Lire l\'article')))));
+                        articles.push(React.createElement('article', { className: 'col-12 col-lg-6', key: "article" + i }, React.createElement('div', { className: 'article-entry' }, React.createElement('header', { className: 'img' }, React.createElement('img', { src: article_coverpath, alt: 'Test', className: 'img-fit img-fit-cover' })), React.createElement('div', { className: 'article-content' }, React.createElement('h2', null, article_title), React.createElement('p', null, article_intro), React.createElement('a', { onClick: () => me.openArticle(article_id), className: 'more fadein', href: 'javascript:void(0)' }, 'Lire l\'article')))));
                     }
                     // then set to the store and render use this to create his
                     // list
@@ -32894,7 +32968,7 @@ module.exports = List;
 /* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {var React = __webpack_require__(11);
+/* WEBPACK VAR INJECTION */(function($) {var React = __webpack_require__(12);
 
 class Login extends React.Component {
     constructor() {
@@ -32922,40 +32996,67 @@ class Login extends React.Component {
     // use when user click on "Connexion"
     connection() {
         var me = this,
-            user = this.state.user;
+            user = this.state.user,
+            name = document.getElementById("name"),
+            password = document.getElementById("password");
 
-        if (false) {
-            console.log('non');
+        if (user.name === "") {
+            name.style.borderColor = "red";
+            console.log('Remplir champ mail');
+            if (user.password === "") {
+                password.style.borderColor = "red";
+            } else {
+                password.style.borderColor = "green";
+            }
+        } else if (user.password === "") {
+            password.style.borderColor = "red";
+            console.log('Remplir champ mot de passe');
+            if (user.name === "") {
+                name.style.borderColor = "red";
+            } else {
+                name.style.borderColor = "green";
+            }
         } else {
+            name.style.borderColor = "green";
+            password.style.borderColor = "green";
+
             $.ajax({
                 url: 'http://localhost/blog/apps/back/api/controller' + '/User/read.php',
                 type: "POST",
                 data: {
                     sql: "SELECT_User",
-                    login: user["name"],
-                    password: user["password"]
+                    user_mail: user.name,
+                    user_password: user.password
                 },
-                success: function (result) {
-                    if (false) {
-                        console.log('non');
+                success: function (response) {
+                    var response = response.records === undefined ? response : response.records[0];
+
+                    if (response.message) {
+                        console.log('Pas utilisateur');
                     } else {
-                        console.log(result.records);
-                        // localStorage.setItem('logged', true);
-                        // me.props.validate();
+                        localStorage.removeItem('want_log');
+                        localStorage.setItem('logged', true);
+                        localStorage.setItem('user_id', response.user_id);
+                        localStorage.setItem('user_firstname', response.user_firstname);
+                        localStorage.setItem('user_lastname', response.user_lastname);
+                        localStorage.setItem('user_mail', response.user_mail);
+                        localStorage.setItem('user_pseudo', response.user_pseudo);
+                        localStorage.setItem('user_is_admin', response.user_is_admin === "1" ? true : false);
+                        me.props.validate();
                     }
                 },
                 error: function (error) {
                     console.log(error);
                 },
                 complete: function () {
-                    console.log('done');
+                    console.log('request done');
                 }
             });
         }
     }
 
     render() {
-        return React.createElement("div", { id: "login" }, React.createElement("section", { className: "container-fluid" }, React.createElement("div", { className: "row justify-content-center" }, React.createElement("div", { className: "col-11 col-md-7 col-xl-3 login-content" }, React.createElement("header", null, React.createElement("h3", null, React.createElement("i", { className: "fa fa-sign-in", "aria-hidden": "true" }), " Sign in")), React.createElement("div", { className: "form-group" }, React.createElement("h4", null, "Adresse e-mail"), React.createElement("input", { onInput: this.updateUser, name: "name_blog", type: "email", className: "form-control", placeholder: "johndoe@example.com" })), React.createElement("div", { className: "form-group" }, React.createElement("h4", null, "Mot de passe"), React.createElement("input", { onInput: this.updateUser, name: "password_blog", type: "password", className: "form-control", placeholder: "Example123*" })), React.createElement("div", { className: "form-check" }, React.createElement("label", { className: "form-check-label" }, React.createElement("input", { onChange: this.updateUser, type: "checkbox", className: "form-check-input", name: "stay_connect_blog" }), React.createElement("p", null, "Rester connect\xE9"))), React.createElement("footer", null, React.createElement("button", { onClick: this.connection, className: "btn btn-blue fadein" }, "Connexion"))))));
+        return React.createElement("div", { id: "login" }, React.createElement("div", { className: "wrap" }, React.createElement("section", { className: "container-fluid window" }, React.createElement("div", { className: "row justify-content-center" }, React.createElement("div", { className: "col-11 col-md-7 col-xl-3 login-content" }, React.createElement("header", null, React.createElement("h3", null, React.createElement("i", { className: "fa fa-sign-in", "aria-hidden": "true" }), " Sign in")), React.createElement("div", { className: "form-group" }, React.createElement("h4", null, "Adresse e-mail"), React.createElement("input", { onInput: this.updateUser, id: "name", name: "name", type: "email", className: "form-control", placeholder: "johndoe@example.com" })), React.createElement("div", { className: "form-group" }, React.createElement("h4", null, "Mot de passe"), React.createElement("input", { onInput: this.updateUser, id: "password", name: "password", type: "password", className: "form-control", placeholder: "Example123*" })), false && React.createElement("div", { className: "form-check" }, React.createElement("label", { className: "form-check-label" }, React.createElement("input", { onChange: this.updateUser, type: "checkbox", className: "form-check-input", name: "stay_connect" }), React.createElement("p", null, "Rester connect\xE9"))), React.createElement("footer", null, React.createElement("button", { onClick: this.connection, className: "btn btn-blue fadein" }, "Connexion")))))));
     }
 }
 
@@ -32966,7 +33067,7 @@ module.exports = Login;
 /* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var React = __webpack_require__(11);
+var React = __webpack_require__(12);
 
 class Footer extends React.Component {
     render() {
@@ -32980,19 +33081,37 @@ module.exports = Footer;
 /* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var React = __webpack_require__(11);
+var React = __webpack_require__(12);
 
 class Header extends React.Component {
     constructor() {
         super();
 
-        this.state = {
-            logged: localStorage.getItem('logged')
-        };
+        this.openList = this.openList.bind(this);
+        this.openLogin = this.openLogin.bind(this);
+    }
+
+    deconnection() {
+        localStorage.clear();
+        location.reload();
+    }
+
+    openList() {
+        localStorage.removeItem('article_id');
+        localStorage.removeItem('want_log');
+        location.reload();
+    }
+
+    openLogin() {
+        localStorage.setItem('want_log', true);
+        location.reload();
     }
 
     render() {
-        return React.createElement("header", { id: "body-header", className: "container-fluid" }, React.createElement("div", { className: "row m-auto" }, React.createElement("div", { className: "col-12 d-inline-flex" }, React.createElement("a", { href: "#", className: "fadein" }, React.createElement("h2", null, "ECV_blog")), React.createElement("div", { className: "login fadein my-auto" }, React.createElement("span", { className: "d-none d-sm-inline" }, "Se connecter"), React.createElement("i", { className: "fa fa-user-circle-o fa-2x", "aria-hidden": "true" })))));
+        var first_name = localStorage.getItem('user_firstname'),
+            last_name = localStorage.getItem('user_lastname');
+
+        return React.createElement('header', { id: 'body-header', className: 'container-fluid' }, React.createElement('div', { className: 'row m-auto' }, React.createElement('div', { className: 'col-12 d-inline-flex' }, React.createElement('a', { onClick: this.openList, href: 'javascript:void(0)', className: 'fadein' }, React.createElement('h2', null, 'ECV_blog')), localStorage.getItem('want_log') !== "true" && localStorage.getItem('logged') !== "true" && React.createElement('div', { onClick: this.openLogin, className: 'login fadein my-auto' }, React.createElement('span', { className: 'd-none d-sm-inline' }, 'Se connecter'), React.createElement('i', { className: 'fa fa-user-circle-o fa-2x', 'aria-hidden': 'true' })), localStorage.getItem('want_log') !== "true" && localStorage.getItem('logged') === "true" && React.createElement('div', { onClick: this.deconnection, className: 'login fadein my-auto' }, React.createElement('span', { className: 'd-none d-sm-inline' }, 'Se d\xE9connecter'), React.createElement('i', { className: 'fa fa-close fa-2x', 'aria-hidden': 'true' })))));
     }
 }
 

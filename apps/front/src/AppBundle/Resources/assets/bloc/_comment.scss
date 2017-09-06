@@ -1,10 +1,37 @@
 .comments-space {
     margin-bottom: 5rem;
     margin-top: 5rem;
+    .add-comment {
+        padding: 20px 30px 0;
+        p {
+            font-size: 1.8rem;
+        }
+        textarea {
+            border-radius: 3px;
+            height: 110px;
+            outline: none;
+            padding: 10px;
+            resize: none;
+            width: 100%;
+            @media all and (max-width: 576px) {
+                height: 310px;
+            }
+        }
+    }
     .comment, .no-comment {
         margin-top: 2rem;
     }
     .comment {
         padding: 0 30px;
+    }
+    .need-connect {
+        margin-top: 2.5rem;
+        p {
+            color: $medium_grey;
+        }
+    }
+    .send {
+        padding-left: 30px;
+        padding-right: 30px;
     }
 }

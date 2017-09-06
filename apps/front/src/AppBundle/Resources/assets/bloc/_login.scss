@@ -1,6 +1,7 @@
 div#login {
-    padding-bottom: 25px;
-    padding-top: 25px;
+    // background: url('http://i2.cdn.cnn.com/cnnnext/dam/assets/150326161627-news-stream-full-full-169.png');
+    height: 100%;
+    width: 100%;
 
     button {
         float: right;
@@ -49,5 +50,19 @@ div#login {
         h1 {
             color: $medium_grey;
         }
+    }
+    .window {
+        position: absolute;
+        padding-bottom: 25px;
+        padding-top: 25px;
+        transform: translateY(-50%);
+        top: calc(50% - 45px);
+        @media all and (max-width: 576px) {
+            top: 50%;
+        }
+    }
+    .wrap {
+        height: 100%;
+        position: relative;
     }
 }

@@ -6,19 +6,37 @@ class Article extends React.Component {
 
         this.state = {
             article: [],
-            comments: [],
-            nbComments: 0,
             article_id: localStorage.getItem('article_id'),
+            comment: "",
+            comments: [],
+            logged: localStorage.getItem('logged'),
+            nbCar: 0,
+            nbComments: 0,
         };
 
+        this.updateComment = this.updateComment.bind(this);
         this.getArticle = this.getArticle.bind(this);
         this.getComments = this.getComments.bind(this);
         this.openList = this.openList.bind(this);
+        this.sendComment = this.sendComment.bind(this);
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0);
         this.getArticle();
         this.getComments();
+    }
+
+    updateComment(event) {
+        var state = this.state;
+        state.comment = event.target.value;
+        state.nbCar = state.comment.length;
+        if(state.nbCar > 140) {
+            document.getElementById("nbCar").style.color = "red";
+        } else {
+            document.getElementById("nbCar").style.color = "#333333";
+        }
+        this.setState(state);
     }
 
     // use to get all articles from the server
@@ -68,9 +86,9 @@ class Article extends React.Component {
                                 </div>
                             </header>
                             <div className="row justify-content-center">
-                                <div className="col-9">
+                                <div className="col-12 col-lg-9">
                                     <p>{article_content}</p>
-                                    <h5>Auteur - {user_firstname} {user_lastname}</h5>
+                                    <h5 className="text-right">Auteur - {user_firstname} {user_lastname}</h5>
                                 </div>
                             </div>
                         </div>
@@ -111,8 +129,6 @@ class Article extends React.Component {
                 if(response.message) {
                     console.log("Pas de commentaires");
                 } else {
-                    console.log(response.length)
-                    console.log(response)
                     for(var i = 0; i < response.length; i++) {
                         let comment_title = response[i].comment_title === "" ? "Pas de titre" : response[i].comment_title,
                             comment_content = response[i].comment_content === "" ? "Pas de titre" : response[i].comment_content,
@@ -122,7 +138,7 @@ class Article extends React.Component {
 
                         comments.push(
                             <div className="row justify-content-center" key={"comment"+ i}>
-                                <div className="col-9 comment">
+                                <div className="col-12 col-lg-9 comment">
                                     <header>
                                         <p>{user_firstname +" "+ user_lastname +" "+ comment_date}</p>
                                     </header>
@@ -152,11 +168,52 @@ class Article extends React.Component {
         this.props.openList();
     }
 
+    sendComment() {
+        var me = this,
+            comment = document.getElementById("comment"),
+            comment_content = me.state.comment,
+            comment_articleid = localStorage.getItem('article_id'),
+            comment_authorid = localStorage.getItem('user_id');
+
+        if(comment_content === "") {
+            comment.style.borderColor = "red";
+            console.log("Pas de commentaire");
+        } else {
+            comment.style.borderColor = "green";
+
+            $.ajax({
+                url: 'http://localhost/blog/apps/back/api/controller' +'/Comment/create.php',
+                type: "POST",
+                data: {
+                    comment_content: comment_content,
+                    comment_articleid: comment_articleid,
+                    comment_authorid: comment_authorid
+                },
+                success: function(response) {
+                    var response = response.records === undefined ? response : response.records[0];
+
+                    comment.value = "";
+                    comment.removeAttribute('style');
+                    me.getComments();
+                },
+                error: function(error) {
+                    console.log(error);
+                },
+                complete: function() {
+                    console.log('request done');
+                }
+            });
+        }
+    }
+
     render() {
         var me = this,
-            article = me.state.article,
-            comments = me.state.comments,
-            nbComments = me.state.nbComments;
+            state = me.state,
+            article = state.article,
+            comments = state.comments,
+            logged = state.logged,
+            nbCar = state.nbCar,
+            nbComments = state.nbComments;
 
         return (
             <div id="article">
@@ -167,22 +224,45 @@ class Article extends React.Component {
                         </div>
                     </div>
                     <div className="row justify-content-center">
-                        <article className="col-10">
+                        <article className="col-11 col-lg-10">
                             {article}
                         </article>
                     </div>
                     <div className="row justify-content-center comments-space">
-                        <div className="col-10">
+                        <div className="col-11 col-lg-10">
                             <div className="row justify-content-center">
-                                <div className="col-9">
+                                <div className="col-12 col-lg-9">
                                     <h3>Commentaires</h3>
                                 </div>
                             </div>
                             {nbComments > 0 && comments}
                             {nbComments <= 0 &&
                                 <div className="row justify-content-center no-comment">
-                                    <div className="col-10 text-center">
+                                    <div className="col-12 col-lg-10 text-center">
                                         <h5>Pas de commentaires</h5>
+                                    </div>
+                                </div>
+                            }
+                            {logged === "true" &&
+                                <div className="wrap">
+                                    <div className="row justify-content-center">
+                                        <div className="col-12 col-lg-9 add-comment">
+                                            <p>Ajouter un commentaire</p>
+                                            <textarea onInput={this.updateComment} id="comment" name="comment" placeholder="Taper votre commentaire ici..."></textarea>
+                                            <p id="nbCar">{nbCar} / 140 caratères</p>
+                                        </div>
+                                    </div>
+                                    <div className="row justify-content-center">
+                                        <div className="col-12 col-lg-9 text-right send">
+                                            <button onClick={this.sendComment} className="btn btn-blue fadein">Envoyer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            {logged !== "true" &&
+                                <div className="row justify-content-center">
+                                    <div className="col-12 col-lg-9 text-center need-connect">
+                                        <p>Connectez-vous pour ajouter un commentaire</p>
                                     </div>
                                 </div>
                             }

@@ -35,8 +35,9 @@ class Content extends React.Component {
     // props use to refresh component when user is logging
     validate() {
         var state = this.state;
-        state.logged = localStorage.getItem('logged');
+        state.want_log = localStorage.getItem('want_log');
         this.setState(state);
+        this.props.reload();
     }
 
     // if user is logged, then return to App login page
@@ -60,7 +61,7 @@ class Content extends React.Component {
     }
 
     render() {
-        if(this.state.want_log === true) {
+        if(this.state.want_log === "true") {
 			return this.renderToLog();
 		} else {
             return this.renderHome();

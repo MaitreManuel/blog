@@ -41,7 +41,7 @@ class Comment {
 
     function create($comment_authorid, $comment_articleid, $comment_content, $comment_date) {
         $query = "INSERT INTO comments(comment_authorid, comment_articleid, comment_content, comment_title, comment_date)
-                VALUES (". $comment_authorid .", ". $comment_articleid .", '". $comment_content ."', *NULL*, '". $comment_date ."')";
+                VALUES (". $comment_authorid .", ". $comment_articleid .", '". $comment_content ."', '*NULL*', '". $comment_date ."')";
 
         $stmt = $this->conn->prepare($query);
 

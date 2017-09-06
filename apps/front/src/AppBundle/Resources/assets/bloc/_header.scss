@@ -12,9 +12,13 @@ header#body-header {
     .login {
         color: $primary_white;
         cursor: pointer;
+        display: inline-flex;
         margin-left: auto;
         i {
             margin-left: 10px;
+        }
+        span {
+            line-height: 2.2;
         }
     }
 }

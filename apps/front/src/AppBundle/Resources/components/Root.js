@@ -5,11 +5,27 @@ var Footer = require("./common/Footer.js");
 var Header = require("./common/Header.js");
 
 class Root extends React.Component {
+    constructor() {
+        super();
+
+        this.state = {
+            action: localStorage.getItem('logged'),
+        };
+
+        this.reload = this.reload.bind(this)
+    }
+
+    reload() {
+        var state = this.state;
+        state.action = localStorage.getItem('logged');
+        this.setState(state);
+    }
+
     render() {
         return (
             <section id="Root">
-                <Header />
-                <Content />
+                <Header/>
+                <Content reload={this.reload}/>
                 <Footer />
             </section>
         );

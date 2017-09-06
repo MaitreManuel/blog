@@ -51,7 +51,7 @@ class List extends React.Component {
                                     <div className="article-content">
                                         <h2>{article_title}</h2>
                                         <p>{article_intro}</p>
-                                        <a onClick={() => me.openArticle(article_id)} className="more fadein" href="#">Lire l&#039;article</a>
+                                        <a onClick={() => me.openArticle(article_id)} className="more fadein" href="javascript:void(0)">Lire l&#039;article</a>
                                     </div>
                                 </div>
                             </article>

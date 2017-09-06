@@ -52,7 +52,6 @@ switch ($sql) {
     case 'SELECT_User':
         $mail = isset($_POST['user_mail']) ? $_POST['user_mail'] : die();
         $password = isset($_POST['user_password']) ? $_POST['user_password'] : die();
-        echo $password;
         $stmt = $user->readOne($mail, $password);
         $num = $stmt->rowCount();
 
@@ -65,9 +64,9 @@ switch ($sql) {
                 extract($row);
 
                 $user_item = array(
-                    "user_firstname" => $user_id,
-                    "user_lastname" => $user_firstname,
-                    "user_id" => $user_lastname,
+                    "user_firstname" => $user_firstname,
+                    "user_lastname" => $user_lastname,
+                    "user_id" => $user_id,
                     "user_mail" => $user_mail,
                     "user_pseudo" => $user_pseudo,
                     "user_is_admin" => $user_is_admin

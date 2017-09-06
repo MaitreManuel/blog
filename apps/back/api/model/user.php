@@ -42,7 +42,6 @@ class User {
                     user_pseudo,
                     user_is_admin
                     FROM ". $this->table_name ." WHERE user_mail = '". $mail ."' AND user_password = '". $password ."'";
-        echo $query;
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
 
