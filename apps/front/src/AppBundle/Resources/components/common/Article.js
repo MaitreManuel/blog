@@ -40,7 +40,7 @@ class Article extends React.Component {
                     response = response.records === undefined ? response : response.records[0];
 
                 if(response.message) {
-                    console.log("Pas d'article");
+                    console.log("Erreur de chargement");
                 } else {
                     let article_id = response.article_id,
                         article_title = response.article_title === "" ? "Pas de titre" : response.article_title,
@@ -59,19 +59,18 @@ class Article extends React.Component {
                         user_is_admin = response.user_is_admin === "" ? "Pas de statut admin" : response.user_is_admin;
 
                     article.push(
-                        <div className="article-page" key={"article"+ id}>
+                        <div className="article-page" key={"article"+ article_id}>
                             <header>
                                 <h1>{article_title}</h1>
+                                <p>{article_intro}</p>
                                 <div className="img">
                                     <img src={article_coverpath} alt="Test" className="img-fit img-fit-cover" />
                                 </div>
                             </header>
                             <div className="row justify-content-center">
                                 <div className="col-9">
-                                    <h3>Introduction</h3>
-                                    <p>{article_intro}</p>
-                                    <h5>Auteur - {user_firstname} {user_lastname}</h5>
                                     <p>{article_content}</p>
+                                    <h5>Auteur - {user_firstname} {user_lastname}</h5>
                                 </div>
                             </div>
                         </div>
@@ -110,8 +109,10 @@ class Article extends React.Component {
                     response = response.records === undefined ? response : response.records;
 
                 if(response.message) {
-                    console.log("Pas d'article");
+                    console.log("Pas de commentaires");
                 } else {
+                    console.log(response.length)
+                    console.log(response)
                     for(var i = 0; i < response.length; i++) {
                         let comment_title = response[i].comment_title === "" ? "Pas de titre" : response[i].comment_title,
                             comment_content = response[i].comment_content === "" ? "Pas de titre" : response[i].comment_content,
@@ -120,13 +121,12 @@ class Article extends React.Component {
                             user_lastname = response[i].user_lastname === "" ? "Pas de nom" : response[i].user_lastname;
 
                         comments.push(
-                            <div className="row justify-content-center" key={"comment"+ id}>
+                            <div className="row justify-content-center" key={"comment"+ i}>
                                 <div className="col-9 comment">
                                     <header>
                                         <p>{user_firstname +" "+ user_lastname +" "+ comment_date}</p>
                                     </header>
                                     <div className="content">
-                                        <p>{comment_title}</p>
                                         <p>{comment_content}</p>
                                     </div>
                                 </div>
@@ -155,7 +155,8 @@ class Article extends React.Component {
     render() {
         var me = this,
             article = me.state.article,
-            comments = me.state.comments;
+            comments = me.state.comments,
+            nbComments = me.state.nbComments;
 
         return (
             <div id="article">
@@ -170,14 +171,21 @@ class Article extends React.Component {
                             {article}
                         </article>
                     </div>
-                    <div className="row justify-content-center">
+                    <div className="row justify-content-center comments-space">
                         <div className="col-10">
                             <div className="row justify-content-center">
                                 <div className="col-9">
                                     <h3>Commentaires</h3>
                                 </div>
                             </div>
-                            {comments}
+                            {nbComments > 0 && comments}
+                            {nbComments <= 0 &&
+                                <div className="row justify-content-center no-comment">
+                                    <div className="col-10 text-center">
+                                        <h5>Pas de commentaires</h5>
+                                    </div>
+                                </div>
+                            }
                         </div>
                     </div>
                 </section>

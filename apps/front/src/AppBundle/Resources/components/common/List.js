@@ -84,8 +84,18 @@ class List extends React.Component {
             <div id="list">
                 <section className="container-fluid">
                     <header className="row justify-content-center">
-                        <div className="col-11">
+                        <div className="col-11 col-md-2 title">
                             <h3>Articles</h3>
+                        </div>
+                        <div className="col-11 col-md-6"></div>
+                        <div className="col-11 col-md-3 my-auto share">
+                            <div className="share-list">
+                                <ul>
+                                    <li className="share-icon text-center fadein"><a href="https://www.facebook.com/ECVDigitalNantes/" target="_blank" className="fadein"><i className="fa fa-facebook fa-2x"></i></a></li>
+                                    <li className="share-icon text-center fadein"><a href="https://twitter.com/MDev_ECVNantes?lang=fr" target="_blank" className="fadein"><i className="fa fa-twitter fa-2x"></i></a></li>
+                                    <li className="share-icon text-center fadein"><a href="https://www.linkedin.com/school/9222115/" target="_blank" className="fadein"><i className="fa fa-linkedin fa-2x"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
                     </header>
                 </section>

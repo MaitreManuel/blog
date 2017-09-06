@@ -32,7 +32,6 @@ switch ($sql) {
                     "comment_authorid" => $comment_authorid,
                     "comment_articleid" => $comment_articleid,
                     "comment_content" => $comment_content,
-                    "comment_title" => $comment_title,
                     "comment_date" => $comment_date,
                     "user_firstname" => $user_firstname,
                     "user_lastname" => $user_lastname

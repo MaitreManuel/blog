@@ -32587,11 +32587,10 @@ var React = __webpack_require__(11);
 var Content = __webpack_require__(189);
 var Footer = __webpack_require__(193);
 var Header = __webpack_require__(194);
-var Spin = __webpack_require__(195);
 
 class Root extends React.Component {
     render() {
-        return React.createElement("section", { id: "Root" }, React.createElement(Spin, null), React.createElement(Header, null), React.createElement(Content, null), React.createElement(Footer, null));
+        return React.createElement("section", { id: "Root" }, React.createElement(Header, null), React.createElement(Content, null), React.createElement(Footer, null));
     }
 }
 
@@ -32713,7 +32712,7 @@ class Article extends React.Component {
                     response = response.records === undefined ? response : response.records[0];
 
                 if (response.message) {
-                    console.log("Pas d'article");
+                    console.log("Erreur de chargement");
                 } else {
                     let article_id = response.article_id,
                         article_title = response.article_title === "" ? "Pas de titre" : response.article_title,
@@ -32731,7 +32730,7 @@ class Article extends React.Component {
                         user_pseudo = response.user_pseudo === "" ? "Pas de pseudo" : response.user_pseudo,
                         user_is_admin = response.user_is_admin === "" ? "Pas de statut admin" : response.user_is_admin;
 
-                    article.push(React.createElement('div', { className: 'article-page', key: "article" + id }, React.createElement('header', null, React.createElement('h1', null, article_title), React.createElement('div', { className: 'img' }, React.createElement('img', { src: article_coverpath, alt: 'Test', className: 'img-fit img-fit-cover' }))), React.createElement('div', { className: 'row justify-content-center' }, React.createElement('div', { className: 'col-9' }, React.createElement('h3', null, 'Introduction'), React.createElement('p', null, article_intro), React.createElement('h5', null, 'Auteur - ', user_firstname, ' ', user_lastname), React.createElement('p', null, article_content)))));
+                    article.push(React.createElement('div', { className: 'article-page', key: "article" + article_id }, React.createElement('header', null, React.createElement('h1', null, article_title), React.createElement('p', null, article_intro), React.createElement('div', { className: 'img' }, React.createElement('img', { src: article_coverpath, alt: 'Test', className: 'img-fit img-fit-cover' }))), React.createElement('div', { className: 'row justify-content-center' }, React.createElement('div', { className: 'col-9' }, React.createElement('p', null, article_content), React.createElement('h5', null, 'Auteur - ', user_firstname, ' ', user_lastname)))));
                     // then set to the store and render use this to create his
                     // list
                     me.setState({ article: article });
@@ -32766,8 +32765,10 @@ class Article extends React.Component {
                     response = response.records === undefined ? response : response.records;
 
                 if (response.message) {
-                    console.log("Pas d'article");
+                    console.log("Pas de commentaires");
                 } else {
+                    console.log(response.length);
+                    console.log(response);
                     for (var i = 0; i < response.length; i++) {
                         let comment_title = response[i].comment_title === "" ? "Pas de titre" : response[i].comment_title,
                             comment_content = response[i].comment_content === "" ? "Pas de titre" : response[i].comment_content,
@@ -32775,7 +32776,7 @@ class Article extends React.Component {
                             user_firstname = response[i].user_firstname === "" ? "Pas de prénom" : response[i].user_firstname,
                             user_lastname = response[i].user_lastname === "" ? "Pas de nom" : response[i].user_lastname;
 
-                        comments.push(React.createElement('div', { className: 'row justify-content-center', key: "comment" + id }, React.createElement('div', { className: 'col-9 comment' }, React.createElement('header', null, React.createElement('p', null, user_firstname + " " + user_lastname + " " + comment_date)), React.createElement('div', { className: 'content' }, React.createElement('p', null, comment_title), React.createElement('p', null, comment_content)))));
+                        comments.push(React.createElement('div', { className: 'row justify-content-center', key: "comment" + i }, React.createElement('div', { className: 'col-9 comment' }, React.createElement('header', null, React.createElement('p', null, user_firstname + " " + user_lastname + " " + comment_date)), React.createElement('div', { className: 'content' }, React.createElement('p', null, comment_content)))));
                     }
                     // // then set to the store and render use this to create his
                     // // list
@@ -32799,9 +32800,10 @@ class Article extends React.Component {
     render() {
         var me = this,
             article = me.state.article,
-            comments = me.state.comments;
+            comments = me.state.comments,
+            nbComments = me.state.nbComments;
 
-        return React.createElement('div', { id: 'article' }, React.createElement('section', { className: 'container-fluid' }, React.createElement('div', { className: 'row' }, React.createElement('div', { className: 'col-11' }, React.createElement('button', { onClick: this.openList, className: 'btn btn-blue fadein' }, React.createElement('i', { className: 'fa fa-long-arrow-left', 'aria-hidden': 'true' }), ' Retour \xE0 la liste'))), React.createElement('div', { className: 'row justify-content-center' }, React.createElement('article', { className: 'col-10' }, article)), React.createElement('div', { className: 'row justify-content-center' }, React.createElement('div', { className: 'col-10' }, React.createElement('div', { className: 'row justify-content-center' }, React.createElement('div', { className: 'col-9' }, React.createElement('h3', null, 'Commentaires'))), comments))));
+        return React.createElement('div', { id: 'article' }, React.createElement('section', { className: 'container-fluid' }, React.createElement('div', { className: 'row' }, React.createElement('div', { className: 'col-11' }, React.createElement('button', { onClick: this.openList, className: 'btn btn-blue fadein' }, React.createElement('i', { className: 'fa fa-long-arrow-left', 'aria-hidden': 'true' }), ' Retour \xE0 la liste'))), React.createElement('div', { className: 'row justify-content-center' }, React.createElement('article', { className: 'col-10' }, article)), React.createElement('div', { className: 'row justify-content-center comments-space' }, React.createElement('div', { className: 'col-10' }, React.createElement('div', { className: 'row justify-content-center' }, React.createElement('div', { className: 'col-9' }, React.createElement('h3', null, 'Commentaires'))), nbComments > 0 && comments, nbComments <= 0 && React.createElement('div', { className: 'row justify-content-center no-comment' }, React.createElement('div', { className: 'col-10 text-center' }, React.createElement('h5', null, 'Pas de commentaires')))))));
     }
 }
 
@@ -32881,7 +32883,7 @@ class List extends React.Component {
         var me = this,
             articles = me.state.articles;
 
-        return React.createElement('div', { id: 'list' }, React.createElement('section', { className: 'container-fluid' }, React.createElement('header', { className: 'row justify-content-center' }, React.createElement('div', { className: 'col-11' }, React.createElement('h3', null, 'Articles')))), React.createElement('section', { className: 'container-fluid' }, React.createElement('div', { className: 'row justify-content-center' }, React.createElement('div', { className: 'col-12 col-lg-11 col-xl-9' }, React.createElement('div', { className: 'row' }, articles)))));
+        return React.createElement('div', { id: 'list' }, React.createElement('section', { className: 'container-fluid' }, React.createElement('header', { className: 'row justify-content-center' }, React.createElement('div', { className: 'col-11 col-md-2 title' }, React.createElement('h3', null, 'Articles')), React.createElement('div', { className: 'col-11 col-md-6' }), React.createElement('div', { className: 'col-11 col-md-3 my-auto share' }, React.createElement('div', { className: 'share-list' }, React.createElement('ul', null, React.createElement('li', { className: 'share-icon text-center fadein' }, React.createElement('a', { href: 'https://www.facebook.com/ECVDigitalNantes/', target: '_blank', className: 'fadein' }, React.createElement('i', { className: 'fa fa-facebook fa-2x' }))), React.createElement('li', { className: 'share-icon text-center fadein' }, React.createElement('a', { href: 'https://twitter.com/MDev_ECVNantes?lang=fr', target: '_blank', className: 'fadein' }, React.createElement('i', { className: 'fa fa-twitter fa-2x' }))), React.createElement('li', { className: 'share-icon text-center fadein' }, React.createElement('a', { href: 'https://www.linkedin.com/school/9222115/', target: '_blank', className: 'fadein' }, React.createElement('i', { className: 'fa fa-linkedin fa-2x' })))))))), React.createElement('section', { className: 'container-fluid' }, React.createElement('div', { className: 'row justify-content-center' }, React.createElement('div', { className: 'col-12 col-lg-11 col-xl-9' }, React.createElement('div', { className: 'row' }, articles)))));
     }
 }
 
@@ -32929,6 +32931,7 @@ class Login extends React.Component {
                 url: 'http://localhost/blog/apps/back/api/controller' + '/User/read.php',
                 type: "POST",
                 data: {
+                    sql: "SELECT_User",
                     login: user["name"],
                     password: user["password"]
                 },
@@ -32980,27 +32983,20 @@ module.exports = Footer;
 var React = __webpack_require__(11);
 
 class Header extends React.Component {
+    constructor() {
+        super();
+
+        this.state = {
+            logged: localStorage.getItem('logged')
+        };
+    }
+
     render() {
-        return React.createElement("header", { id: "body-header", className: "container-fluid" }, React.createElement("div", { className: "row m-auto" }, React.createElement("div", { className: "col-12 d-inline-flex" }, React.createElement("a", { href: "#", className: "fadein" }, React.createElement("h2", null, "ECV_blog")), false && React.createElement("a", { href: "#", className: "logout fadein" }, React.createElement("i", { className: "fa fa-power-off fa-2x", "aria-hidden": "true" })))));
+        return React.createElement("header", { id: "body-header", className: "container-fluid" }, React.createElement("div", { className: "row m-auto" }, React.createElement("div", { className: "col-12 d-inline-flex" }, React.createElement("a", { href: "#", className: "fadein" }, React.createElement("h2", null, "ECV_blog")), React.createElement("div", { className: "login fadein my-auto" }, React.createElement("span", { className: "d-none d-sm-inline" }, "Se connecter"), React.createElement("i", { className: "fa fa-user-circle-o fa-2x", "aria-hidden": "true" })))));
     }
 }
 
 module.exports = Header;
-
-/***/ }),
-/* 195 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var React = __webpack_require__(11);
-
-class Spin extends React.Component {
-    // just a component to create the spinner, nothing to change here
-    render() {
-        return React.createElement("div", { id: "Spin" }, React.createElement("div", { id: "overlay" }, React.createElement("div", { id: "loader" })));
-    }
-}
-
-module.exports = Spin;
 
 /***/ })
 /******/ ]);

@@ -52,6 +52,7 @@ switch ($sql) {
     case 'SELECT_User':
         $mail = isset($_POST['user_mail']) ? $_POST['user_mail'] : die();
         $password = isset($_POST['user_password']) ? $_POST['user_password'] : die();
+        echo $password;
         $stmt = $user->readOne($mail, $password);
         $num = $stmt->rowCount();
 

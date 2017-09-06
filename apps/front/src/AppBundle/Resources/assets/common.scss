@@ -11,14 +11,15 @@
 @import '~bootstrap/scss/pagination';
 
 @import 'bloc/article';
+@import 'bloc/comment';
 @import 'bloc/footer';
 @import 'bloc/header';
 @import 'bloc/list';
 @import 'bloc/login';
+@import 'bloc/social';
 @import 'tool/animation';
 @import 'tool/button';
 @import 'tool/input';
-@import 'tool/spinner';
 
 html {
   font-size: 10px;

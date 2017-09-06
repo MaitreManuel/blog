@@ -5620,9 +5620,13 @@ article {
     height: 350px;
     margin-bottom: 2rem; }
 
-.comment {
-  border: 1px solid #9d9c9c;
-  border-radius: 7px; }
+.comments-space {
+  margin-bottom: 5rem;
+  margin-top: 5rem; }
+  .comments-space .comment, .comments-space .no-comment {
+    margin-top: 2rem; }
+  .comments-space .comment {
+    padding: 0 30px; }
 
 footer#body-footer {
   margin-top: auto;
@@ -5636,18 +5640,28 @@ header#body-header {
   height: 90px;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem; }
+  header#body-header > div {
+    height: 100%; }
   header#body-header h2 {
     line-height: 2; }
-  header#body-header .logout {
+  header#body-header .login {
     color: #fff;
-    margin-left: auto;
-    padding-top: 1rem; }
-    header#body-header .logout:hover {
-      color: #ff5c33; }
+    cursor: pointer;
+    margin-left: auto; }
+    header#body-header .login i {
+      margin-left: 10px; }
 
 div#list {
   padding-bottom: 25px;
   padding-top: 25px; }
+  div#list header {
+    margin-bottom: 3rem; }
+    @media all and (min-width: 577px) {
+      div#list header {
+        margin-top: 2rem; } }
+    @media all and (max-width: 576px) {
+      div#list header .title {
+        text-align: center; } }
 
 div#login {
   padding-bottom: 25px;
@@ -5683,6 +5697,52 @@ div#login {
     div#login .site-title h1 {
       color: #9d9c9c; }
 
+.share {
+  text-align: right; }
+  @media all and (max-width: 576px) {
+    .share {
+      text-align: center; } }
+  .share .share-list {
+    display: inline-flex; }
+    @media all and (max-width: 576px) {
+      .share .share-list {
+        display: block; } }
+    .share .share-list ul {
+      list-style-type: none;
+      margin: 0; }
+      @media all and (max-width: 1024px) {
+        .share .share-list ul {
+          display: inline-flex;
+          padding: 0;
+          -webkit-column-count: 4;
+          column-count: 4; } }
+      .share .share-list ul li {
+        float: left;
+        margin: 0 15px 0 0; }
+        @media all and (max-width: 1024px) {
+          .share .share-list ul li {
+            margin: 0 15px; } }
+      .share .share-list ul .share-icon {
+        align-items: center;
+        background-color: transparent;
+        border-radius: 100%;
+        display: inline-flex;
+        font-size: 1.2rem;
+        height: 40px;
+        line-height: 1rem;
+        width: 40px; }
+        .share .share-list ul .share-icon:hover {
+          cursor: pointer; }
+          .share .share-list ul .share-icon:hover a {
+            color: #66ccff; }
+        @media all and (max-width: 576px) {
+          .share .share-list ul .share-icon {
+            margin-top: 15px; } }
+        .share .share-list ul .share-icon a {
+          color: #9d9c9c;
+          vertical-align: middle;
+          width: 100%; }
+
 .fadein {
   -webkit-transition: background-color .2s ease-in, color .2s ease-in, fill .2s ease-in;
   transition: background-color .2s ease-in, color .2s ease-in, fill .2s ease-in; }
@@ -5707,42 +5767,6 @@ input[type="password"],
 input[type="text"] {
   font-size: 1.6rem;
   line-height: 1.5; }
-
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg); }
-  100% {
-    -webkit-transform: rotate(360deg); } }
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg); }
-  100% {
-    transform: rotate(360deg); } }
-
-#loader {
-  z-index: 110;
-  position: absolute;
-  top: calc(50vh - 55px);
-  left: calc(50vw - 55px);
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #66ccff;
-  width: 80px;
-  height: 80px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite; }
-
-#overlay {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1003;
-  top: 0;
-  left: 0;
-  background-color: black;
-  background-color: rgba(0, 0, 0, 0.9);
-  overflow-x: hidden; }
 
 html {
   font-size: 10px; }

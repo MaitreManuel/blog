@@ -35,6 +35,7 @@ class Login extends React.Component {
                 url: 'http://localhost/blog/apps/back/api/controller' +'/User/read.php',
                 type: "POST",
                 data: {
+                    sql: "SELECT_User",
                     login: user["name"],
                     password: user["password"]
                 },

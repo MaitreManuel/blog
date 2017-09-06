@@ -3,15 +3,18 @@ header#body-header {
     height: 90px;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    > div {
+        height: 100%;
+    }
     h2 {
         line-height: 2;
     }
-    .logout {
+    .login {
         color: $primary_white;
+        cursor: pointer;
         margin-left: auto;
-        padding-top: 1rem;
-        &:hover {
-            color: $primary_red;
+        i {
+            margin-left: 10px;
         }
     }
 }

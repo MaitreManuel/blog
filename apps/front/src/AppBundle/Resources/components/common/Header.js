@@ -1,6 +1,14 @@
 var React = require("react");
 
 class Header extends React.Component {
+    constructor() {
+        super();
+
+        this.state = {
+            logged: localStorage.getItem('logged'),
+        };
+    }
+
     render() {
         return (
             <header id="body-header" className="container-fluid">
@@ -9,13 +17,10 @@ class Header extends React.Component {
                         <a href="#" className="fadein">
                             <h2>ECV_blog</h2>
                         </a>
-                        {
-                            (false)
-                            &&
-                            <a href="#" className="logout fadein">
-                                <i className="fa fa-power-off fa-2x" aria-hidden="true"></i>
-                            </a>
-                        }
+                        <div className="login fadein my-auto">
+                            <span className="d-none d-sm-inline">Se connecter</span>
+                            <i className="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
+                        </div>
                     </div>
                 </div>
             </header>

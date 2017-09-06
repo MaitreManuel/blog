@@ -1,0 +1,53 @@
+.share {
+    text-align: right;
+    @media all and (max-width: 576px) {
+        text-align: center;
+    }
+    .share-list {
+        display: inline-flex;
+        @media all and (max-width: 576px) {
+            display: block;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            @media all and (max-width: 1024px) {
+                display: inline-flex;
+                padding: 0;
+                -webkit-column-count: 4;
+                column-count: 4;
+            }
+            li {
+                float: left;
+                margin: 0 15px 0 0;
+                @media all and (max-width: 1024px) {
+                    margin: 0 15px;
+                }
+            }
+            .share-icon {
+                align-items: center;
+                background-color: transparent;
+                border-radius: 100%;
+                display: inline-flex;
+                font-size: 1.2rem;
+                height: 40px;
+                line-height: 1rem;
+                width: 40px;
+                &:hover {
+                    cursor: pointer;
+                    a {
+                        color: $primary_blue;
+                    }
+                }
+                @media all and (max-width: 576px) {
+                    margin-top: 15px;
+                }
+                a {
+                    color: $medium_grey;
+                    vertical-align: middle;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

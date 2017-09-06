@@ -1,4 +1,15 @@
 div#list {
     padding-bottom: 25px;
     padding-top: 25px;
+    header {
+        margin-bottom: 3rem;
+        @media all and (min-width: 577px) {
+            margin-top: 2rem;
+        }
+        .title {
+            @media all and (max-width: 576px) {
+                text-align: center;
+            }
+        }
+    }
 }

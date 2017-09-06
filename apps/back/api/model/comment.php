@@ -22,7 +22,6 @@ class Comment {
                     comments.comment_authorid,
                     comments.comment_articleid,
                     comments.comment_content,
-                    comments.comment_title,
                     comments.comment_date,
                     users.user_firstname,
                     users.user_lastname
@@ -32,11 +31,25 @@ class Comment {
                   LEFT JOIN users
                   ON comments.comment_authorid = users.user_id
                   WHERE comments.comment_articleid = ". $article_id ."
-                  ORDER BY comments.comment_date DESC";
+                  GROUP BY comments.comment_id
+                  ORDER BY comments.comment_date ASC";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
 
         return $stmt;
+    }
+
+    function create($comment_authorid, $comment_articleid, $comment_content, $comment_date) {
+        $query = "INSERT INTO comments(comment_authorid, comment_articleid, comment_content, comment_title, comment_date)
+                VALUES (". $comment_authorid .", ". $comment_articleid .", '". $comment_content ."', *NULL*, '". $comment_date ."')";
+
+        $stmt = $this->conn->prepare($query);
+
+        if($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 

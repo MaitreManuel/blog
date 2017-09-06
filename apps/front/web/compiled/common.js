@@ -90,26 +90,7 @@ module.exports = __webpack_require__(84);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common_scss__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__common_scss__);
-// import bootstrap from 'bootstrap';
-// import domready from 'domready';
-// import objectFitImages from 'object-fit-images';
 
-
-
-// domready(() => {
-//
-// });
-
-function spin(spin) {
-    if (spin == true) {
-        document.getElementById("overlay").style.width = "100%";
-        setTimeout(function () {
-            document.getElementById("overlay").style.width = "0%";
-        }, 15000);
-    } else {
-        document.getElementById("overlay").style.width = "0%";
-    }
-}
 
 /***/ }),
 
