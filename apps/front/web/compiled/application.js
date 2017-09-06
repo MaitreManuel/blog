@@ -32751,10 +32751,6 @@ class Article extends React.Component {
         message.innerHTML = "Voulez-vous vraiment supprimmer ce commentaire ?";
     }
 
-    editComment(comment_id) {
-        console.log(comment_id);
-    }
-
     deleteComment() {
         var me = this,
             comment_id = localStorage.getItem('comment_id'),
@@ -32770,6 +32766,29 @@ class Article extends React.Component {
             success: function (response) {
                 me.getComments();
                 me.closeConfirmModal();
+            },
+            error: function (error) {
+                console.log(error);
+            },
+            complete: function () {
+                console.log('request done');
+            }
+        });
+    }
+
+    editComment(comment_id) {
+        var me = this,
+            comment_content = document.getElementById("textbox" + comment_id).value;
+
+        $.ajax({
+            url: 'http://localhost/blog/apps/back/api/controller' + '/Comment/update.php',
+            type: "POST",
+            data: {
+                comment_id: comment_id,
+                comment_content: comment_content
+            },
+            success: function (response) {
+                me.getComments();
             },
             error: function (error) {
                 console.log(error);
@@ -32863,7 +32882,17 @@ class Article extends React.Component {
                             user_firstname = response[i].user_firstname === "" ? "Pas de prénom" : response[i].user_firstname,
                             user_lastname = response[i].user_lastname === "" ? "Pas de nom" : response[i].user_lastname;
 
-                        comments.push(React.createElement("div", { className: "row justify-content-center", key: "comment" + i }, React.createElement("div", { className: "col-12 col-lg-9 comment" }, React.createElement("div", { className: "wrap" }, React.createElement("header", null, React.createElement("p", null, user_firstname + " " + user_lastname + " " + comment_date)), React.createElement("div", { className: "content" }, React.createElement("p", null, comment_content), React.createElement("div", { className: "edit-mode" }, React.createElement("textarea", { onInput: this.updateComment, className: "lit-textbox", name: "comment", defaultValue: comment_content, placeholder: "Editer votre commentaire ici..." }))), comment_authorid === localStorage.getItem('user_id') && React.createElement("div", { className: "wrap-opts" }, React.createElement("i", { onClick: () => me.editComment(comment_id), className: "fa fa-pencil fadein", "aria-hidden": "true" }), React.createElement("i", { onClick: () => me.confirmModal(comment_id), className: "fa fa-close fadein", "aria-hidden": "true" }))))));
+                        let t = comment_date.split(/[- :]/),
+                            d = new Date(t[0], t[1] - 1, t[2], t[3], t[4], t[5]),
+                            date = new Date(d),
+                            day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate(),
+                            month = date.getMonth() < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1,
+                            hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours(),
+                            minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+
+                        let current_date = "le " + day + "/" + month + "/" + date.getFullYear() + ", à " + hours + ":" + minutes;
+
+                        comments.push(React.createElement("div", { className: "row justify-content-center", key: "comment" + comment_id }, React.createElement("div", { className: "col-12 col-lg-9 comment" }, React.createElement("div", { className: "wrap" }, React.createElement("header", null, React.createElement("p", null, user_firstname + " " + user_lastname + " " + current_date)), React.createElement("div", { className: "content" }, React.createElement("p", null, comment_content), React.createElement("div", { id: "edit-comment" + comment_id, className: "edit-mode toggle-edit text-right" }, React.createElement("textarea", { id: "textbox" + comment_id, className: "lit-textbox", name: "comment", defaultValue: comment_content, placeholder: "Editer votre commentaire ici..." }), React.createElement("button", { onClick: () => me.editComment(comment_id), className: "btn btn-blue fadein" }, "Envoyer"))), comment_authorid === localStorage.getItem('user_id') && React.createElement("div", { className: "wrap-opts" }, React.createElement("i", { onClick: () => me.openEditMode(comment_id), className: "fa fa-pencil fadein", "aria-hidden": "true" }), React.createElement("i", { onClick: () => me.confirmModal(comment_id), className: "fa fa-close fadein", "aria-hidden": "true" }))))));
                     }
                     // // then set to the store and render use this to create his
                     // // list
@@ -32877,6 +32906,10 @@ class Article extends React.Component {
                 // spin(false);
             }
         });
+    }
+
+    openEditMode(id) {
+        document.getElementById("edit-comment" + id).classList.toggle('toggle-edit');
     }
 
     openList() {
@@ -32931,7 +32964,7 @@ class Article extends React.Component {
             nbCar = state.nbCar,
             nbComments = state.nbComments;
 
-        return React.createElement("div", { id: "article" }, React.createElement("div", { id: "confirm-modal" }, React.createElement("div", { className: "container-modal" }, React.createElement("div", { className: "title-modal" }, React.createElement("h3", { id: "text-title-modal" }), React.createElement("i", { onClick: this.closeConfirmModal, className: "fa fa-close fa-3x close-modal goright fadein", "aria-hidden": "true" })), React.createElement("div", { className: "content-modal" }, React.createElement("span", { id: "message-content-modal" })), React.createElement("div", { className: "footer-modal" }, React.createElement("button", { onClick: this.closeConfirmModal, className: "btn btn-grey fadein" }, "Annuler"), React.createElement("button", { onClick: this.deleteComment, className: "btn btn-blue fadein" }, "Supprimer")))), React.createElement("section", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-11" }, React.createElement("button", { onClick: this.openList, className: "btn btn-blue fadein" }, React.createElement("i", { className: "fa fa-long-arrow-left", "aria-hidden": "true" }), " Retour \xE0 la liste"))), React.createElement("div", { className: "row justify-content-center" }, React.createElement("article", { className: "col-11 col-lg-10" }, article)), React.createElement("div", { className: "row justify-content-center comments-space" }, React.createElement("div", { className: "col-11 col-lg-10" }, React.createElement("div", { className: "row justify-content-center" }, React.createElement("div", { className: "col-12 col-lg-9" }, React.createElement("h3", null, "Commentaires"))), nbComments > 0 && comments, nbComments <= 0 && React.createElement("div", { className: "row justify-content-center no-comment" }, React.createElement("div", { className: "col-12 col-lg-10 text-center" }, React.createElement("h5", null, "Pas de commentaires"))), logged === "true" && React.createElement("div", { className: "wrap" }, React.createElement("div", { className: "row justify-content-center" }, React.createElement("div", { className: "col-12 col-lg-9 add-comment" }, React.createElement("p", null, "Ajouter un commentaire"), React.createElement("textarea", { onInput: this.updateComment, id: "comment", name: "comment", placeholder: "Taper votre commentaire ici..." }))), React.createElement("div", { className: "row justify-content-center" }, React.createElement("div", { className: "col-12 col-lg-9 text-right send" }, React.createElement("button", { onClick: this.sendComment, className: "btn btn-blue fadein" }, "Envoyer")))), logged !== "true" && React.createElement("div", { className: "row justify-content-center" }, React.createElement("div", { className: "col-12 col-lg-9 text-center need-connect" }, React.createElement("p", null, "Connectez-vous pour ajouter un commentaire")))))));
+        return React.createElement("div", { id: "article" }, React.createElement("div", { id: "confirm-modal" }, React.createElement("div", { className: "container-modal" }, React.createElement("div", { className: "title-modal" }, React.createElement("h3", { id: "text-title-modal" }), React.createElement("i", { onClick: this.closeConfirmModal, className: "fa fa-close fa-3x close-modal goright fadein", "aria-hidden": "true" })), React.createElement("div", { className: "content-modal" }, React.createElement("span", { id: "message-content-modal" })), React.createElement("div", { className: "footer-modal" }, React.createElement("button", { onClick: this.closeConfirmModal, className: "btn btn-grey fadein" }, "Annuler"), React.createElement("button", { onClick: this.deleteComment, className: "btn btn-blue fadein" }, "Supprimer")))), React.createElement("section", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-11" }, React.createElement("button", { onClick: this.openList, className: "btn btn-blue fadein" }, React.createElement("i", { className: "fa fa-long-arrow-left", "aria-hidden": "true" }), " Articles"))), React.createElement("div", { className: "row justify-content-center" }, React.createElement("article", { className: "col-11 col-lg-10" }, article)), React.createElement("div", { className: "row justify-content-center comments-space" }, React.createElement("div", { className: "col-11 col-lg-10" }, React.createElement("div", { className: "row justify-content-center" }, React.createElement("div", { className: "col-12 col-lg-9" }, React.createElement("h3", null, "Commentaires"))), nbComments > 0 && comments, nbComments <= 0 && React.createElement("div", { className: "row justify-content-center no-comment" }, React.createElement("div", { className: "col-12 col-lg-10 text-center" }, React.createElement("h5", null, "Pas de commentaires"))), logged === "true" && React.createElement("div", { className: "wrap" }, React.createElement("div", { className: "row justify-content-center" }, React.createElement("div", { className: "col-12 col-lg-9 add-comment" }, React.createElement("p", null, "Ajouter un commentaire"), React.createElement("textarea", { onInput: this.updateComment, id: "comment", name: "comment", placeholder: "Taper votre commentaire ici..." }))), React.createElement("div", { className: "row justify-content-center" }, React.createElement("div", { className: "col-12 col-lg-9 text-right send" }, React.createElement("button", { onClick: this.sendComment, className: "btn btn-blue fadein" }, "Envoyer")))), logged !== "true" && React.createElement("div", { className: "row justify-content-center" }, React.createElement("div", { className: "col-12 col-lg-9 text-center need-connect" }, React.createElement("p", null, "Connectez-vous pour ajouter un commentaire")))))));
     }
 }
 

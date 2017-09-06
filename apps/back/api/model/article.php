@@ -49,10 +49,12 @@ class Article {
                     user_mail,
                     user_pseudo,
                     user_is_admin
-                    FROM ". $this->table_name ." INNER JOIN users ON article_authorid = user_id WHERE article_id = ". $id;
+                    FROM ". $this->table_name ." INNER JOIN users ON article_authorid = user_id WHERE article_id = :article_id";
 
         $stmt = $this->conn->prepare($query);
-        $stmt->execute();
+        $stmt->execute(array(
+            'article_id' => $id
+        ));
 
         return $stmt;
     }

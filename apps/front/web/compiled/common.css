@@ -5676,6 +5676,8 @@ article {
           color: #333333; }
       .comments-space .comment .wrap p {
         word-break: break-word; }
+      .comments-space .comment .wrap .toggle-edit {
+        display: none; }
   .comments-space .need-connect {
     margin-top: 2.5rem; }
     .comments-space .need-connect p {

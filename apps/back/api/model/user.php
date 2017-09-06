@@ -41,9 +41,12 @@ class User {
                     user_mail,
                     user_pseudo,
                     user_is_admin
-                    FROM ". $this->table_name ." WHERE user_mail = '". $mail ."' AND user_password = '". $password ."'";
+                    FROM ". $this->table_name ." WHERE user_mail = :user_mail AND user_password = :user_password";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute();
+        $stmt->execute(array(
+            'user_mail' => $mail,
+            'user_password' => $password
+        ));
 
         return $stmt;
     }

@@ -64,10 +64,6 @@ class Article extends React.Component {
         message.innerHTML = "Voulez-vous vraiment supprimmer ce commentaire ?";
     }
 
-    editComment(comment_id) {
-        console.log(comment_id);
-    }
-
     deleteComment() {
         var me = this,
             comment_id = localStorage.getItem('comment_id'),
@@ -82,7 +78,30 @@ class Article extends React.Component {
             },
             success: function(response) {
                 me.getComments();
-                me.closeConfirmModal()
+                me.closeConfirmModal();
+            },
+            error: function(error) {
+                console.log(error);
+            },
+            complete: function() {
+                console.log('request done');
+            }
+        });
+    }
+
+    editComment(comment_id) {
+        var me = this,
+            comment_content = document.getElementById("textbox"+ comment_id).value;
+
+        $.ajax({
+            url: 'http://localhost/blog/apps/back/api/controller' +'/Comment/update.php',
+            type: "POST",
+            data: {
+                comment_id: comment_id,
+                comment_content: comment_content
+            },
+            success: function(response) {
+                me.getComments();
             },
             error: function(error) {
                 console.log(error);
@@ -192,22 +211,33 @@ class Article extends React.Component {
                             user_firstname = response[i].user_firstname === "" ? "Pas de prénom" : response[i].user_firstname,
                             user_lastname = response[i].user_lastname === "" ? "Pas de nom" : response[i].user_lastname;
 
+                        let t = comment_date.split(/[- :]/),
+                            d = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]),
+                            date = new Date(d),
+                            day = date.getDate() < 10 ? "0"+ date.getDate() : date.getDate(),
+                            month = date.getMonth() < 10 ? "0"+ (date.getMonth() + 1) : (date.getMonth() + 1),
+                            hours = date.getHours() < 10 ? "0"+ date.getHours() : date.getHours(),
+                            minutes = date.getMinutes() < 10 ? "0"+ date.getMinutes() : date.getMinutes();
+
+                        let current_date = "le "+ day +"/"+ month +"/"+ date.getFullYear() +", à "+ hours +":"+ minutes;
+
                         comments.push(
-                            <div className="row justify-content-center" key={"comment"+ i}>
+                            <div className="row justify-content-center" key={"comment"+ comment_id}>
                                 <div className="col-12 col-lg-9 comment">
                                     <div className="wrap">
                                         <header>
-                                            <p>{user_firstname +" "+ user_lastname +" "+ comment_date}</p>
+                                            <p>{user_firstname +" "+ user_lastname +" "+ current_date}</p>
                                         </header>
                                         <div className="content">
                                             <p>{comment_content}</p>
-                                            <div className="edit-mode">
-                                                <textarea onInput={this.updateComment} className="lit-textbox" name="comment" defaultValue={comment_content} placeholder="Editer votre commentaire ici..."></textarea>
+                                            <div id={"edit-comment"+ comment_id} className="edit-mode toggle-edit text-right">
+                                                <textarea id={"textbox"+ comment_id} className="lit-textbox" name="comment" defaultValue={comment_content} placeholder="Editer votre commentaire ici..."></textarea>
+                                                <button onClick={ () => me.editComment(comment_id) } className="btn btn-blue fadein">Envoyer</button>
                                             </div>
                                         </div>
                                         { comment_authorid === localStorage.getItem('user_id') &&
                                             <div className="wrap-opts">
-                                                <i onClick={ () => me.editComment(comment_id) } className="fa fa-pencil fadein" aria-hidden="true"></i>
+                                                <i onClick={ () => me.openEditMode(comment_id) } className="fa fa-pencil fadein" aria-hidden="true"></i>
                                                 <i onClick={ () => me.confirmModal(comment_id) } className="fa fa-close fadein" aria-hidden="true"></i>
                                             </div>
                                         }
@@ -228,6 +258,10 @@ class Article extends React.Component {
                 // spin(false);
             }
         });
+    }
+
+    openEditMode(id) {
+        document.getElementById("edit-comment"+ id).classList.toggle('toggle-edit');
     }
 
     openList() {
@@ -303,7 +337,7 @@ class Article extends React.Component {
                 <section className="container-fluid">
                     <div className="row">
                         <div className="col-11">
-                            <button onClick={this.openList} className="btn btn-blue fadein"><i className="fa fa-long-arrow-left" aria-hidden="true"></i> Retour à la liste</button>
+                            <button onClick={this.openList} className="btn btn-blue fadein"><i className="fa fa-long-arrow-left" aria-hidden="true"></i> Articles</button>
                         </div>
                     </div>
                     <div className="row justify-content-center">
