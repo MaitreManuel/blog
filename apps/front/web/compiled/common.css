@@ -5843,8 +5843,12 @@ div#body-preheader {
         width: 40px; }
         .share .share-list ul .share-icon:hover {
           cursor: pointer; }
-          .share .share-list ul .share-icon:hover a {
-            color: #66ccff; }
+          .share .share-list ul .share-icon:hover .github {
+            color: #24292e; }
+          .share .share-list ul .share-icon:hover .linkedin {
+            color: #0084bf; }
+          .share .share-list ul .share-icon:hover .twitter {
+            color: #1da1f2; }
         @media all and (max-width: 576px) {
           .share .share-list ul .share-icon {
             margin-top: 15px; } }

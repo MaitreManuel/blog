@@ -21,7 +21,7 @@ class Login extends React.Component {
         var me = this;
         document.getElementsByTagName("body")[0].id = "b-login";
         document.getElementById("b-login").addEventListener("keydown", function (e) {
-            if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
+            if (e.keyCode === 13) {
                 me.connection();
             }
         });

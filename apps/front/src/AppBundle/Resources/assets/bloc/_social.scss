@@ -35,8 +35,14 @@
                 width: 40px;
                 &:hover {
                     cursor: pointer;
-                    a {
-                        color: $primary_blue;
+                    .github {
+                        color: $github;
+                    }
+                    .linkedin {
+                        color: $linkedin;
+                    }
+                    .twitter {
+                        color: $twitter;
                     }
                 }
                 @media all and (max-width: 576px) {
