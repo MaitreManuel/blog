@@ -70,25 +70,25 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 193);
+/******/ 	return __webpack_require__(__webpack_require__.s = 83);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 193:
+/***/ 83:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(194);
+module.exports = __webpack_require__(84);
 
 
 /***/ }),
 
-/***/ 194:
+/***/ 84:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common_scss__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common_scss__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__common_scss__);
 // import domready from 'domready';
 // import objectFitImages from 'object-fit-images';
@@ -98,10 +98,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 // domready(() => {
 //     objectFitImages();
 // });
+function test() {
+    console.log("test");
+}
 
 /***/ }),
 
-/***/ 195:
+/***/ 85:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

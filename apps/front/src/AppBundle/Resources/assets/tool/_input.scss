@@ -1,6 +1,87 @@
-input[type="email"],
-input[type="password"],
-input[type="text"] {
-    font-size: 1.6rem;
-    line-height: 1.5;
+.group 			  {
+    margin-bottom: 45px;
+    position: relative;
+}
+input 				{
+    border: none;
+    border-bottom: 1px solid $medium_grey;
+    display: block;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    width: 100%;
+}
+input:focus {
+    outline: none;
+}
+input::-webkit-input-placeholder {
+    color: transparent;
+}
+input:focus::-webkit-input-placeholder {
+    color: $medium_grey;
+}
+
+label {
+    color: $medium_grey;
+    font-size: 18px;
+    font-weight: normal;
+    left: 5px;
+    position: absolute;
+    pointer-events: none;
+    top: 10px;
+    -webkit-transition: .2s ease all;
+    transition: .2s ease all;
+}
+
+input:focus ~ label, .not-empty {
+    color: $primary_blue;
+    font-size: 14px;
+    top: -20px;
+}
+
+.bar {
+    display: block;
+    position: relative;
+}
+.bar:before, .bar:after {
+    background: $primary_blue;
+    bottom: 1px;
+    content: '';
+    height: 2px;
+    position: absolute;
+    width: 0;
+    transition: 0.2s ease all;
+}
+.bar:before {
+    left: 50%;
+}
+.bar:after {
+    right: 50%;
+}
+
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width: 50%;
+}
+
+.highlight {
+    height: 60%;
+    left: 0;
+    opacity: 0.5;
+    pointer-events: none;
+    position: absolute;
+    top: 25%;
+    width: 100px;
+}
+
+input:focus ~ .highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+@-webkit-keyframes inputHighlighter {
+    from { background: $primary_blue; }
+    to 	{ background:transparent; width: 0; }
+}
+@keyframes inputHighlighter {
+    from { background: $primary_blue; }
+    to 	{ background:transparent; width: 0; }
 }

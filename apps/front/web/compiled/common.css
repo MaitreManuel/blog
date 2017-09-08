@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);@charset "UTF-8";
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -5593,7 +5593,7 @@ article {
       padding: 20px 15px; }
       article div.article-entry div.article-content a.more {
         color: #ff5c33;
-        font-family: "Nunito Sans";
+        font-family: "Roboto";
         text-decoration: underline; }
         article div.article-entry div.article-content a.more:hover {
           color: #66ccff; }
@@ -5611,7 +5611,7 @@ article {
         article div.article-entry div.article-content a::after {
           top: 8px; }
       article div.article-entry div.article-content h2 {
-        color: #ff5c33; }
+        color: #9d9c9c; }
     article div.article-entry header.img {
       height: 250px; }
   article .article-page h1, article .article-page h3 {
@@ -5625,6 +5625,7 @@ article {
     height: 350px;
     margin-bottom: 4rem; }
   article .wrap-article {
+    border-radius: 2px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     overflow: hidden;
     -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -5634,9 +5635,10 @@ article {
     article .wrap-article .article-entry {
       -webkit-transition: transform .3s;
       transition: transform .3s; }
-      article .wrap-article .article-entry:hover {
-        -webkit-transform: scale(1.02);
-        transform: scale(1.05); }
+      article .wrap-article .article-entry .read {
+        color: #ff5c33;
+        font-size: 1.6rem;
+        text-transform: uppercase; }
 
 .comments-space {
   margin-bottom: 5rem;
@@ -5724,6 +5726,15 @@ div#list {
       div#list header.h-list .title {
         text-align: center; } }
 
+body#b-login #body-preheader, body#b-login #body-header, body#b-login #body-footer {
+  display: none; }
+
+body#b-login #login {
+  background-image: url(4bf8469ec4b42fc3e985ad7d7d921d13.jpg);
+  background-size: cover; }
+  body#b-login #login .wrap {
+    background-color: rgba(255, 255, 255, 0.7); }
+
 div#login {
   height: 100%;
   width: 100%; }
@@ -5732,7 +5743,7 @@ div#login {
   div#login h3, div#login h4 {
     color: #66ccff; }
   div#login header {
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
     text-align: center; }
   div#login span {
     color: #9d9c9c; }
@@ -5742,8 +5753,23 @@ div#login {
       margin-top: 0.4rem; }
     div#login .form-check p {
       margin-left: 5px; }
-  div#login .form-group {
-    margin-bottom: 2rem; }
+  div#login .flt-return {
+    display: inline-flex;
+    left: 15px;
+    position: absolute;
+    cursor: pointer; }
+    @media all and (min-width: 577px) {
+      div#login .flt-return {
+        top: 15px; } }
+    @media all and (max-width: 576px) {
+      div#login .flt-return {
+        bottom: 0; } }
+    div#login .flt-return i, div#login .flt-return p {
+      color: #66ccff; }
+    div#login .flt-return p {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-left: 10px; }
   div#login .login-content {
     background-color: #fff;
     border-top: 4px solid #66ccff;
@@ -5832,11 +5858,15 @@ div#body-preheader {
   transition: background-color .2s ease-in, color .2s ease-in, fill .2s ease-in; }
 
 .btn {
-  border-radius: 7px;
-  margin-bottom: 1.5rem;
-  margin-top: 1.5rem;
+  border-radius: 2px;
+  font-weight: bold;
+  height: 36px;
+  margin-bottom: 12px;
+  margin-top: 12px;
   outline: none;
-  padding: 8px 20px; }
+  padding-left: 16px;
+  padding-right: 16px;
+  text-transform: uppercase; }
   .btn:active, .btn:focus, .btn:hover {
     cursor: pointer; }
   .btn.btn-blue {
@@ -5854,11 +5884,91 @@ div#body-preheader {
       background-color: #fff;
       color: #333333; }
 
-input[type="email"],
-input[type="password"],
-input[type="text"] {
-  font-size: 1.6rem;
-  line-height: 1.5; }
+.group {
+  margin-bottom: 45px;
+  position: relative; }
+
+input {
+  border: none;
+  border-bottom: 1px solid #9d9c9c;
+  display: block;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  width: 100%; }
+
+input:focus {
+  outline: none; }
+
+input::-webkit-input-placeholder {
+  color: transparent; }
+
+input:focus::-webkit-input-placeholder {
+  color: #9d9c9c; }
+
+label {
+  color: #9d9c9c;
+  font-size: 18px;
+  font-weight: normal;
+  left: 5px;
+  position: absolute;
+  pointer-events: none;
+  top: 10px;
+  -webkit-transition: .2s ease all;
+  transition: .2s ease all; }
+
+input:focus ~ label, .not-empty {
+  color: #66ccff;
+  font-size: 14px;
+  top: -20px; }
+
+.bar {
+  display: block;
+  position: relative; }
+
+.bar:before, .bar:after {
+  background: #66ccff;
+  bottom: 1px;
+  content: '';
+  height: 2px;
+  position: absolute;
+  width: 0;
+  transition: 0.2s ease all; }
+
+.bar:before {
+  left: 50%; }
+
+.bar:after {
+  right: 50%; }
+
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width: 50%; }
+
+.highlight {
+  height: 60%;
+  left: 0;
+  opacity: 0.5;
+  pointer-events: none;
+  position: absolute;
+  top: 25%;
+  width: 100px; }
+
+input:focus ~ .highlight {
+  -webkit-animation: inputHighlighter 0.3s ease;
+  animation: inputHighlighter 0.3s ease; }
+
+@-webkit-keyframes inputHighlighter {
+  from {
+    background: #66ccff; }
+  to {
+    background: transparent;
+    width: 0; } }
+
+@keyframes inputHighlighter {
+  from {
+    background: #66ccff; }
+  to {
+    background: transparent;
+    width: 0; } }
 
 #confirm-modal {
   background-color: rgba(0, 0, 0, 0.9);
@@ -5915,7 +6025,7 @@ body {
   background-color: #f2f2f2;
   color: #9d9c9c;
   display: flex;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 1.5rem;
   line-height: 1.5;
   min-height: 100vh; }

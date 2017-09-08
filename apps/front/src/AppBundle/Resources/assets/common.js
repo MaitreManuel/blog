@@ -6,3 +6,6 @@ import './common.scss';
 // domready(() => {
 //     objectFitImages();
 // });
+function test() {
+    console.log("test");
+}

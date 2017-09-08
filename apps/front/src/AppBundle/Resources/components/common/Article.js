@@ -24,6 +24,7 @@ class Article extends React.Component {
     }
 
     componentDidMount() {
+        document.getElementsByTagName("body")[0].id = "b-article";
         window.scrollTo(0, 0);
         this.getArticle();
         this.getComments();
@@ -269,6 +270,11 @@ class Article extends React.Component {
         this.props.openList();
     }
 
+    openLogin() {
+        localStorage.setItem('want_log', true);
+        location.reload();
+    }
+
     sendComment() {
         var me = this,
             comment = document.getElementById("comment"),
@@ -378,7 +384,7 @@ class Article extends React.Component {
                             {logged !== "true" &&
                                 <div className="row justify-content-center">
                                     <div className="col-12 col-lg-9 text-center need-connect">
-                                        <p>Connectez-vous pour ajouter un commentaire</p>
+                                        <p><a onClick={this.openLogin} href="javascript:void(0)">Connectez-vous</a> pour ajouter un commentaire</p>
                                     </div>
                                 </div>
                             }

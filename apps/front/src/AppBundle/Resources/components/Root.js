@@ -1,9 +1,9 @@
 var React = require("react");
 
 var Content = require("./common/Content.js");
-var Footer = require("./common/Footer.js");
 var Header = require("./common/Header.js");
 var PreHeader = require("./common/PreHeader.js");
+var Footer = require("./common/Footer.js");
 
 class Root extends React.Component {
     constructor() {

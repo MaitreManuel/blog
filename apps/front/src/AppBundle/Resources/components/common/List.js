@@ -13,6 +13,7 @@ class List extends React.Component {
     }
 
     componentDidMount() {
+        document.getElementsByTagName("body")[0].id = "b-list";
         this.getArticles();
     }
 
@@ -52,6 +53,7 @@ class List extends React.Component {
                                         <div className="article-content">
                                             <h2>{article_title}</h2>
                                             <p>{article_intro}</p>
+                                            <span className="read">Lire l&#039;article</span>
                                         </div>
                                     </div>
                                 </div>
@@ -92,9 +94,9 @@ class List extends React.Component {
                         <div className="col-11 col-md-3 my-auto share">
                             <div className="share-list">
                                 <ul>
-                                    <li className="share-icon text-center fadein"><a href="https://www.facebook.com/ECVDigitalNantes/" target="_blank" className="fadein"><i className="fa fa-facebook fa-2x"></i></a></li>
                                     <li className="share-icon text-center fadein"><a href="https://twitter.com/MDev_ECVNantes?lang=fr" target="_blank" className="fadein"><i className="fa fa-twitter fa-2x"></i></a></li>
-                                    <li className="share-icon text-center fadein"><a href="https://www.linkedin.com/school/9222115/" target="_blank" className="fadein"><i className="fa fa-linkedin fa-2x"></i></a></li>
+                                    <li className="share-icon text-center fadein"><a href="https://github.com/MaitreManuel" target="_blank" className="fadein"><i className="fa fa-github fa-2x"></i></a></li>
+                                    <li className="share-icon text-center fadein"><a href="https://www.linkedin.com/in/trystan-eveno/" target="_blank" className="fadein"><i className="fa fa-linkedin fa-2x"></i></a></li>
                                 </ul>
                             </div>
                         </div>

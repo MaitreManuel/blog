@@ -1,5 +1,16 @@
+body#b-login {
+    #body-preheader, #body-header, #body-footer {
+        display: none;
+    }
+    #login {
+        background-image: url('../../../../web/bundles/app/img/login_wp.jpg');
+        background-size: cover;
+        .wrap {
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+    }
+}
 div#login {
-    // background: url('http://i2.cdn.cnn.com/cnnnext/dam/assets/150326161627-news-stream-full-full-169.png');
     height: 100%;
     width: 100%;
 
@@ -12,7 +23,7 @@ div#login {
     }
 
     header {
-        margin-bottom: 3rem;
+        margin-bottom: 5rem;
         text-align: center;
     }
 
@@ -30,8 +41,28 @@ div#login {
         }
     }
 
-    .form-group {
-        margin-bottom: 2rem;
+    .flt-return {
+        display: inline-flex;
+        left: 15px;
+        position: absolute;
+        cursor: pointer;
+        &:hover {
+
+        }
+        @media all and (min-width: 577px) {
+            top: 15px;
+        }
+        @media all and (max-width: 576px) {
+            bottom: 0;
+        }
+        i, p {
+            color: $primary_blue;
+        }
+        p {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-left: 10px;
+        }
     }
 
     .login-content {

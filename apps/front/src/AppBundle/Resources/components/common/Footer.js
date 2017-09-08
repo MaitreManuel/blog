@@ -6,7 +6,7 @@ class Footer extends React.Component {
             <footer id="body-footer" className="container-fluid">
                 <div className="row m-auto">
                     <div className="col-12 justify-content-center">
-                        <p><i className="fa fa-copyright" aria-hidden="true"></i>2017 - Trystan Eveno - ECV Digital</p>
+                        <p><i className="fa fa-copyright" aria-hidden="true"></i> 2017 - Trystan Eveno - ECV Digital</p>
                     </div>
                 </div>
             </footer>
