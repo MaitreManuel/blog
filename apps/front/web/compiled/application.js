@@ -32811,15 +32811,13 @@ class Article extends React.Component {
         // spin(true);
 
         $.ajax({
-            url: 'http://localhost/blog/apps/back/api/controller' + '/Article/read.php',
+            url: 'http://localhost/blog/apps/back/api/controller' + '/Article/read_one.php',
             type: "POST",
             data: {
-                sql: "SELECT_Article",
                 article_id: id
             },
             success: function (response) {
-                var article = [],
-                    response = response.records === undefined ? response : response.records[0];
+                var article = [];
 
                 if (response.message) {
                     console.log("Erreur de chargement");
@@ -32867,7 +32865,6 @@ class Article extends React.Component {
             url: 'http://localhost/blog/apps/back/api/controller' + '/Comment/read.php',
             type: "POST",
             data: {
-                sql: "SELECT_Comments",
                 article_id: id
             },
             success: function (response) {
@@ -33011,12 +33008,10 @@ class List extends React.Component {
 
         $.ajax({
             url: 'http://localhost/blog/apps/back/api/controller' + '/Article/read.php',
-            type: "POST",
-            data: {
-                sql: "SELECT_Articles"
-            },
+            type: "GET",
             success: function (response) {
                 var articles = [],
+                    time = 0.3,
                     response = response.records === undefined ? response : response.records;
 
                 if (response.message) {
@@ -33024,6 +33019,7 @@ class List extends React.Component {
                 } else {
                     // we generate a dynamic list of unsolve tickets
                     for (var i = 0; i < response.length; i++) {
+                        time += 0.1;
                         let article_id = response[i].article_id,
                             article_title = response[i].article_title === "" ? "Pas de titre" : response[i].article_title,
                             article_intro = response[i].article_intro === "" ? "Pas d'introduction" : response[i].article_intro,
@@ -33054,7 +33050,7 @@ class List extends React.Component {
         var me = this,
             articles = me.state.articles;
 
-        return React.createElement("div", { id: "list" }, React.createElement("section", { className: "container-fluid" }, React.createElement("header", { className: "row justify-content-center h-list" }, React.createElement("div", { className: "col-11 col-md-2 title" }, React.createElement("h3", null, "Articles")), React.createElement("div", { className: "col-11 col-md-6" }), React.createElement("div", { className: "col-11 col-md-3 my-auto share" }, React.createElement("div", { className: "share-list" }, React.createElement("ul", null, React.createElement("li", { className: "share-icon text-center fadein twitter" }, React.createElement("a", { href: "https://twitter.com/MDev_ECVNantes", target: "_blank", className: "fadein twitter" }, React.createElement("i", { className: "fa fa-twitter fa-2x" }))), React.createElement("li", { className: "share-icon text-center fadein github" }, React.createElement("a", { href: "https://github.com/MaitreManuel", target: "_blank", className: "fadein github" }, React.createElement("i", { className: "fa fa-github fa-2x" }))), React.createElement("li", { className: "share-icon text-center fadein linkedin" }, React.createElement("a", { href: "https://www.linkedin.com/school/9222115/", target: "_blank", className: "fadein linkedin" }, React.createElement("i", { className: "fa fa-linkedin fa-2x" })))))))), React.createElement("section", { className: "container-fluid" }, React.createElement("div", { className: "row justify-content-center" }, React.createElement("div", { className: "col-12 col-xl-11" }, React.createElement("div", { className: "row" }, articles)))));
+        return React.createElement("div", { id: "list" }, React.createElement("section", { className: "container-fluid" }, React.createElement("header", { className: "row justify-content-center h-list" }, React.createElement("div", { className: "col-11 col-md-2 my-auto title" }, React.createElement("h3", null, "Articles")), React.createElement("div", { className: "col-11 col-md-7 my-auto text-center" }, localStorage.getItem("logged") === "true" && React.createElement("button", { className: "btn btn-blue fadein" }, "Nouvel article")), React.createElement("div", { className: "col-11 col-md-2 my-auto share" }, React.createElement("div", { className: "share-list" }, React.createElement("ul", null, React.createElement("li", { className: "share-icon text-center fadein twitter" }, React.createElement("a", { href: "https://twitter.com/MDev_ECVNantes", target: "_blank", className: "fadein twitter" }, React.createElement("i", { className: "fa fa-twitter fa-2x" }))), React.createElement("li", { className: "share-icon text-center fadein github" }, React.createElement("a", { href: "https://github.com/MaitreManuel", target: "_blank", className: "fadein github" }, React.createElement("i", { className: "fa fa-github fa-2x" }))), React.createElement("li", { className: "share-icon text-center fadein linkedin" }, React.createElement("a", { href: "https://www.linkedin.com/school/9222115/", target: "_blank", className: "fadein linkedin" }, React.createElement("i", { className: "fa fa-linkedin fa-2x" })))))))), React.createElement("section", { className: "container-fluid" }, React.createElement("div", { className: "row justify-content-center" }, React.createElement("div", { className: "col-12 col-xl-11" }, React.createElement("div", { className: "row" }, articles)))));
     }
 }
 
@@ -33139,16 +33135,13 @@ class Login extends React.Component {
             password.style.borderColor = "green";
 
             $.ajax({
-                url: 'http://localhost/blog/apps/back/api/controller' + '/User/read.php',
+                url: 'http://localhost/blog/apps/back/api/controller' + '/User/read_one.php',
                 type: "POST",
                 data: {
-                    sql: "SELECT_User",
                     user_mail: user.name,
                     user_password: user.password
                 },
                 success: function (response) {
-                    var response = response.records === undefined ? response : response.records[0];
-
                     if (response.message) {
                         console.log('Pas utilisateur');
                     } else {

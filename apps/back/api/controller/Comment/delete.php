@@ -23,7 +23,7 @@ if($stmt == true) {
     echo '{';
         echo '"message": "Comment was deleted."';
     echo '}';
-} else{
+} else {
     echo '{';
         echo '"message": "Unable to delete comment."';
     echo '}';

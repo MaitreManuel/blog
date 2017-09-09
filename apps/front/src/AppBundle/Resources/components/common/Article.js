@@ -121,15 +121,13 @@ class Article extends React.Component {
         // spin(true);
 
         $.ajax({
-            url: 'http://localhost/blog/apps/back/api/controller' +'/Article/read.php',
+            url: 'http://localhost/blog/apps/back/api/controller' +'/Article/read_one.php',
             type: "POST",
             data: {
-                sql: "SELECT_Article",
                 article_id: id
             },
             success: function(response) {
-                var article = [],
-                    response = response.records === undefined ? response : response.records[0];
+                var article = [];
 
                 if(response.message) {
                     console.log("Erreur de chargement");
@@ -193,7 +191,6 @@ class Article extends React.Component {
             url: 'http://localhost/blog/apps/back/api/controller' +'/Comment/read.php',
             type: "POST",
             data: {
-                sql: "SELECT_Comments",
                 article_id: id
             },
             success: function(response) {

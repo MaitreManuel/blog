@@ -19,7 +19,7 @@ $comment_content = isset($_POST['comment_content']) ? $_POST['comment_content'] 
 
 $stmt = $comment->update($comment_id, $comment_content);
 
-if($comment->update()) {
+if($stmt == true) {
     echo '{';
         echo '"message": "Comment was updated."';
     echo '}';

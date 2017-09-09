@@ -90,17 +90,7 @@ module.exports = __webpack_require__(84);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common_scss__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__common_scss__);
-// import domready from 'domready';
-// import objectFitImages from 'object-fit-images';
 
-
-
-// domready(() => {
-//     objectFitImages();
-// });
-function test() {
-    console.log("test");
-}
 
 /***/ }),
 

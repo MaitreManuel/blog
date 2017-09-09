@@ -72,16 +72,13 @@ class Login extends React.Component {
             password.style.borderColor = "green";
 
             $.ajax({
-                url: 'http://localhost/blog/apps/back/api/controller' +'/User/read.php',
+                url: 'http://localhost/blog/apps/back/api/controller' +'/User/read_one.php',
                 type: "POST",
                 data: {
-                    sql: "SELECT_User",
                     user_mail: user.name,
                     user_password: user.password
                 },
                 success: function(response) {
-                    var response = response.records === undefined ? response : response.records[0];
-
                     if(response.message) {
                         console.log('Pas utilisateur')
                     } else {

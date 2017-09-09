@@ -25,12 +25,10 @@ class List extends React.Component {
 
         $.ajax({
             url: 'http://localhost/blog/apps/back/api/controller' +'/Article/read.php',
-            type: "POST",
-            data: {
-                sql: "SELECT_Articles"
-            },
+            type: "GET",
             success: function(response) {
                 var articles = [],
+                    time = 0.3,
                     response = response.records === undefined ? response : response.records;
 
                 if(response.message) {
@@ -38,6 +36,7 @@ class List extends React.Component {
                 } else {
                     // we generate a dynamic list of unsolve tickets
                     for(var i = 0; i < response.length; i++) {
+                        time += 0.1;
                         let article_id = response[i].article_id,
                             article_title = response[i].article_title === "" ? "Pas de titre" : response[i].article_title,
                             article_intro = response[i].article_intro === "" ? "Pas d'introduction" : response[i].article_intro,
@@ -87,11 +86,15 @@ class List extends React.Component {
             <div id="list">
                 <section className="container-fluid">
                     <header className="row justify-content-center h-list">
-                        <div className="col-11 col-md-2 title">
+                        <div className="col-11 col-md-2 my-auto title">
                             <h3>Articles</h3>
                         </div>
-                        <div className="col-11 col-md-6"></div>
-                        <div className="col-11 col-md-3 my-auto share">
+                        <div className="col-11 col-md-7 my-auto text-center">
+                            { localStorage.getItem("logged") === "true" &&
+                                <button className="btn btn-blue fadein">Nouvel article</button>
+                            }
+                        </div>
+                        <div className="col-11 col-md-2 my-auto share">
                             <div className="share-list">
                                 <ul>
                                     <li className="share-icon text-center fadein twitter"><a href="https://twitter.com/MDev_ECVNantes" target="_blank" className="fadein twitter"><i className="fa fa-twitter fa-2x"></i></a></li>
