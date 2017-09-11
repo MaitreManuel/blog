@@ -26,7 +26,8 @@ if($num > 0) {
             "article_id" => $article_id,
             "article_title" => $article_title,
             "article_intro" => $article_intro,
-            "article_coverpath" => $article_coverpath
+            "article_coverpath" => $article_coverpath,
+            "article_tagslist" => $article_tagslist
         );
 
         array_push($articles_arr["records"], $article_item);

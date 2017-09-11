@@ -154,7 +154,7 @@ class Article extends React.Component {
                                 <h1>{article_title}</h1>
                                 <p>{article_intro}</p>
                                 <div className="img">
-                                    <img src={article_coverpath} alt="Test" className="img-fit img-fit-cover" />
+                                    <img src={article_coverpath} alt={article_title} className="img-fit img-fit-cover" />
                                 </div>
                             </header>
                             <div className="row justify-content-center">
@@ -393,4 +393,4 @@ class Article extends React.Component {
     }
 }
 
-module.exports = Article;
+module.exports =  Article;

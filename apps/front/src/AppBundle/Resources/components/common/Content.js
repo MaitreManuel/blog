@@ -8,16 +8,16 @@ class Content extends React.Component {
     constructor() {
         super();
 
+        this.openArticle = this.openArticle.bind(this);
+        this.openList = this.openList.bind(this);
+        this.renderToLog = this.renderToLog.bind(this);
+        this.renderHome = this.renderHome.bind(this);
+        this.validate = this.validate.bind(this);
+
         this.state = {
             want_log: localStorage.getItem('want_log'),
             article_id: localStorage.getItem('article_id')
         };
-
-        this.openArticle = this.openArticle.bind(this)
-        this.openList = this.openList.bind(this)
-        this.renderToLog = this.renderToLog.bind(this)
-        this.renderHome = this.renderHome.bind(this)
-        this.validate = this.validate.bind(this)
     }
 
     openArticle() {

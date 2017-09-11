@@ -606,7 +606,7 @@ module.exports = ExecutionEnvironment;
 
 var _prodInvariant = __webpack_require__(17);
 
-var ReactCurrentOwner = __webpack_require__(9);
+var ReactCurrentOwner = __webpack_require__(10);
 
 var invariant = __webpack_require__(0);
 var warning = __webpack_require__(1);
@@ -1048,6 +1048,16 @@ module.exports = emptyFunction;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+module.exports = __webpack_require__(16);
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -1078,7 +1088,7 @@ var ReactCurrentOwner = {
 module.exports = ReactCurrentOwner;
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1332,16 +1342,6 @@ var ReactUpdates = {
 };
 
 module.exports = ReactUpdates;
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = __webpack_require__(16);
-
 
 /***/ }),
 /* 12 */
@@ -1847,7 +1847,7 @@ module.exports = DOMProperty;
 
 var _assign = __webpack_require__(3);
 
-var ReactCurrentOwner = __webpack_require__(9);
+var ReactCurrentOwner = __webpack_require__(10);
 
 var warning = __webpack_require__(1);
 var canDefineProperty = __webpack_require__(24);
@@ -5895,10 +5895,10 @@ module.exports = KeyEscapeUtils;
 
 var _prodInvariant = __webpack_require__(2);
 
-var ReactCurrentOwner = __webpack_require__(9);
+var ReactCurrentOwner = __webpack_require__(10);
 var ReactInstanceMap = __webpack_require__(23);
 var ReactInstrumentation = __webpack_require__(7);
-var ReactUpdates = __webpack_require__(10);
+var ReactUpdates = __webpack_require__(11);
 
 var invariant = __webpack_require__(0);
 var warning = __webpack_require__(1);
@@ -17149,7 +17149,7 @@ module.exports = getIteratorFn;
 
 
 
-var ReactCurrentOwner = __webpack_require__(9);
+var ReactCurrentOwner = __webpack_require__(10);
 var ReactComponentTreeHook = __webpack_require__(6);
 var ReactElement = __webpack_require__(14);
 
@@ -18490,7 +18490,7 @@ var _assign = __webpack_require__(3);
 
 var LinkedValueUtils = __webpack_require__(42);
 var ReactDOMComponentTree = __webpack_require__(4);
-var ReactUpdates = __webpack_require__(10);
+var ReactUpdates = __webpack_require__(11);
 
 var warning = __webpack_require__(1);
 
@@ -18980,7 +18980,7 @@ module.exports = ReactHostComponent;
 
 var _prodInvariant = __webpack_require__(2);
 
-var ReactCurrentOwner = __webpack_require__(9);
+var ReactCurrentOwner = __webpack_require__(10);
 var REACT_ELEMENT_TYPE = __webpack_require__(148);
 
 var getIteratorFn = __webpack_require__(149);
@@ -19419,7 +19419,7 @@ var DOMLazyTree = __webpack_require__(19);
 var DOMProperty = __webpack_require__(13);
 var React = __webpack_require__(16);
 var ReactBrowserEventEmitter = __webpack_require__(32);
-var ReactCurrentOwner = __webpack_require__(9);
+var ReactCurrentOwner = __webpack_require__(10);
 var ReactDOMComponentTree = __webpack_require__(4);
 var ReactDOMContainerInfo = __webpack_require__(178);
 var ReactDOMFeatureFlags = __webpack_require__(179);
@@ -19429,7 +19429,7 @@ var ReactInstrumentation = __webpack_require__(7);
 var ReactMarkupChecksum = __webpack_require__(180);
 var ReactReconciler = __webpack_require__(18);
 var ReactUpdateQueue = __webpack_require__(47);
-var ReactUpdates = __webpack_require__(10);
+var ReactUpdates = __webpack_require__(11);
 
 var emptyObject = __webpack_require__(25);
 var instantiateReactComponent = __webpack_require__(73);
@@ -19981,7 +19981,7 @@ module.exports = getHostComponentFromComposite;
 /* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var React = __webpack_require__(11);
+var React = __webpack_require__(9);
 var ReactDOM = __webpack_require__(102);
 
 var Root = __webpack_require__(188);
@@ -20320,7 +20320,7 @@ module.exports = PooledClass;
 
 var _prodInvariant = __webpack_require__(17);
 
-var ReactCurrentOwner = __webpack_require__(9);
+var ReactCurrentOwner = __webpack_require__(10);
 var REACT_ELEMENT_TYPE = __webpack_require__(53);
 
 var getIteratorFn = __webpack_require__(54);
@@ -22478,7 +22478,7 @@ var ReactDOMComponentTree = __webpack_require__(4);
 var ReactDefaultInjection = __webpack_require__(104);
 var ReactMount = __webpack_require__(81);
 var ReactReconciler = __webpack_require__(18);
-var ReactUpdates = __webpack_require__(10);
+var ReactUpdates = __webpack_require__(11);
 var ReactVersion = __webpack_require__(182);
 
 var findDOMNode = __webpack_require__(183);
@@ -23334,7 +23334,7 @@ var EventPluginHub = __webpack_require__(21);
 var EventPropagators = __webpack_require__(20);
 var ExecutionEnvironment = __webpack_require__(5);
 var ReactDOMComponentTree = __webpack_require__(4);
-var ReactUpdates = __webpack_require__(10);
+var ReactUpdates = __webpack_require__(11);
 var SyntheticEvent = __webpack_require__(12);
 
 var inputValueTracking = __webpack_require__(64);
@@ -26898,7 +26898,7 @@ var _prodInvariant = __webpack_require__(2),
 var DOMPropertyOperations = __webpack_require__(70);
 var LinkedValueUtils = __webpack_require__(42);
 var ReactDOMComponentTree = __webpack_require__(4);
-var ReactUpdates = __webpack_require__(10);
+var ReactUpdates = __webpack_require__(11);
 
 var invariant = __webpack_require__(0);
 var warning = __webpack_require__(1);
@@ -27316,7 +27316,7 @@ var _prodInvariant = __webpack_require__(2),
 
 var LinkedValueUtils = __webpack_require__(42);
 var ReactDOMComponentTree = __webpack_require__(4);
-var ReactUpdates = __webpack_require__(10);
+var ReactUpdates = __webpack_require__(11);
 
 var invariant = __webpack_require__(0);
 var warning = __webpack_require__(1);
@@ -27482,7 +27482,7 @@ var ReactComponentEnvironment = __webpack_require__(43);
 var ReactInstanceMap = __webpack_require__(23);
 var ReactInstrumentation = __webpack_require__(7);
 
-var ReactCurrentOwner = __webpack_require__(9);
+var ReactCurrentOwner = __webpack_require__(10);
 var ReactReconciler = __webpack_require__(18);
 var ReactChildReconciler = __webpack_require__(143);
 
@@ -28091,7 +28091,7 @@ var _prodInvariant = __webpack_require__(2),
 
 var React = __webpack_require__(16);
 var ReactComponentEnvironment = __webpack_require__(43);
-var ReactCurrentOwner = __webpack_require__(9);
+var ReactCurrentOwner = __webpack_require__(10);
 var ReactErrorUtils = __webpack_require__(35);
 var ReactInstanceMap = __webpack_require__(23);
 var ReactInstrumentation = __webpack_require__(7);
@@ -29907,7 +29907,7 @@ module.exports = ReactDOMTextComponent;
 
 var _assign = __webpack_require__(3);
 
-var ReactUpdates = __webpack_require__(10);
+var ReactUpdates = __webpack_require__(11);
 var Transaction = __webpack_require__(28);
 
 var emptyFunction = __webpack_require__(8);
@@ -29984,7 +29984,7 @@ var EventListener = __webpack_require__(78);
 var ExecutionEnvironment = __webpack_require__(5);
 var PooledClass = __webpack_require__(15);
 var ReactDOMComponentTree = __webpack_require__(4);
-var ReactUpdates = __webpack_require__(10);
+var ReactUpdates = __webpack_require__(11);
 
 var getEventTarget = __webpack_require__(36);
 var getUnboundedScrollPosition = __webpack_require__(158);
@@ -30189,7 +30189,7 @@ var ReactComponentEnvironment = __webpack_require__(43);
 var ReactEmptyComponent = __webpack_require__(75);
 var ReactBrowserEventEmitter = __webpack_require__(32);
 var ReactHostComponent = __webpack_require__(76);
-var ReactUpdates = __webpack_require__(10);
+var ReactUpdates = __webpack_require__(11);
 
 var ReactInjection = {
   Component: ReactComponentEnvironment.injection,
@@ -32248,7 +32248,7 @@ module.exports = '15.6.1';
 
 var _prodInvariant = __webpack_require__(2);
 
-var ReactCurrentOwner = __webpack_require__(9);
+var ReactCurrentOwner = __webpack_require__(10);
 var ReactDOMComponentTree = __webpack_require__(4);
 var ReactInstanceMap = __webpack_require__(23);
 
@@ -32582,12 +32582,12 @@ module.exports = ReactDOMInvalidARIAHook;
 /* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var React = __webpack_require__(11);
+var React = __webpack_require__(9);
 
 var Content = __webpack_require__(189);
-var Header = __webpack_require__(193);
-var PreHeader = __webpack_require__(194);
-var Footer = __webpack_require__(195);
+var Header = __webpack_require__(194);
+var PreHeader = __webpack_require__(195);
+var Footer = __webpack_require__(196);
 
 class Root extends React.Component {
     constructor() {
@@ -32617,26 +32617,26 @@ module.exports = Root;
 /* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var React = __webpack_require__(11);
+var React = __webpack_require__(9);
 
 var Article = __webpack_require__(190);
 var List = __webpack_require__(191);
-var Login = __webpack_require__(192);
+var Login = __webpack_require__(193);
 
 class Content extends React.Component {
     constructor() {
         super();
-
-        this.state = {
-            want_log: localStorage.getItem('want_log'),
-            article_id: localStorage.getItem('article_id')
-        };
 
         this.openArticle = this.openArticle.bind(this);
         this.openList = this.openList.bind(this);
         this.renderToLog = this.renderToLog.bind(this);
         this.renderHome = this.renderHome.bind(this);
         this.validate = this.validate.bind(this);
+
+        this.state = {
+            want_log: localStorage.getItem('want_log'),
+            article_id: localStorage.getItem('article_id')
+        };
     }
 
     openArticle() {
@@ -32686,9 +32686,10 @@ module.exports = Content;
 
 /***/ }),
 /* 190 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {var React = __webpack_require__(11);
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {var React = __webpack_require__(9);
 
 class Article extends React.Component {
     constructor() {
@@ -32838,7 +32839,7 @@ class Article extends React.Component {
                         user_pseudo = response.user_pseudo === "" ? "Pas de pseudo" : response.user_pseudo,
                         user_is_admin = response.user_is_admin === "" ? "Pas de statut admin" : response.user_is_admin;
 
-                    article.push(React.createElement("div", { className: "article-page", key: "article" + article_id }, React.createElement("header", null, React.createElement("h1", null, article_title), React.createElement("p", null, article_intro), React.createElement("div", { className: "img" }, React.createElement("img", { src: article_coverpath, alt: "Test", className: "img-fit img-fit-cover" }))), React.createElement("div", { className: "row justify-content-center" }, React.createElement("div", { className: "col-12 col-lg-9" }, React.createElement("p", null, article_content), React.createElement("h5", { className: "text-right" }, "Auteur - ", user_firstname, " ", user_lastname)))));
+                    article.push(React.createElement("div", { className: "article-page", key: "article" + article_id }, React.createElement("header", null, React.createElement("h1", null, article_title), React.createElement("p", null, article_intro), React.createElement("div", { className: "img" }, React.createElement("img", { src: article_coverpath, alt: article_title, className: "img-fit img-fit-cover" }))), React.createElement("div", { className: "row justify-content-center" }, React.createElement("div", { className: "col-12 col-lg-9" }, React.createElement("p", null, article_content), React.createElement("h5", { className: "text-right" }, "Auteur - ", user_firstname, " ", user_lastname)))));
                     // then set to the store and render use this to create his
                     // list
                     me.setState({ article: article });
@@ -32975,29 +32976,40 @@ class Article extends React.Component {
 }
 
 module.exports = Article;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(50)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(50)))
 
 /***/ }),
 /* 191 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {var React = __webpack_require__(11);
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {var React = __webpack_require__(9);
+
+var New = __webpack_require__(192);
 
 class List extends React.Component {
     constructor() {
         super();
 
-        this.state = {
-            articles: [],
-            nbArticle: 0
-        };
-
+        this.closeNew = this.closeNew.bind(this);
         this.openArticle = this.openArticle.bind(this);
+        this.openNew = this.openNew.bind(this);
+
+        this.state = {
+            articles_obj: [],
+            articles: [],
+            nbArticle: 0,
+            newArticle: false
+        };
     }
 
     componentDidMount() {
         document.getElementsByTagName("body")[0].id = "b-list";
         this.getArticles();
+    }
+
+    closeNew() {
+        this.setState({ newArticle: false });
     }
 
     // use to get all articles from the server
@@ -33011,6 +33023,7 @@ class List extends React.Component {
             type: "GET",
             success: function (response) {
                 var articles = [],
+                    articles_obj = [],
                     time = 0.3,
                     response = response.records === undefined ? response : response.records;
 
@@ -33025,11 +33038,12 @@ class List extends React.Component {
                             article_intro = response[i].article_intro === "" ? "Pas d'introduction" : response[i].article_intro,
                             article_coverpath = response[i].article_coverpath === "" ? "http://ccwc.org/wp-content/themes/ccwc-theme/images/no-image-available.png" : response[i].article_coverpath;
 
-                        articles.push(React.createElement("article", { onClick: () => me.openArticle(article_id), className: "col-12 col-lg-6 col-xl-4", key: "article" + i }, React.createElement("div", { className: "wrap-article" }, React.createElement("div", { className: "article-entry" }, React.createElement("header", { className: "img" }, React.createElement("img", { src: article_coverpath, alt: "Test", className: "img-fit img-fit-cover" })), React.createElement("div", { className: "article-content" }, React.createElement("h2", null, article_title), React.createElement("p", null, article_intro), React.createElement("span", { className: "read" }, "Lire l'article"))))));
+                        articles_obj.push(response[i]);
+                        articles.push(React.createElement("article", { onClick: () => me.openArticle(article_id), className: "col-12 col-lg-6 col-xl-4", key: "article" + i }, React.createElement("div", { className: "wrap-article" }, React.createElement("div", { className: "article-entry" }, React.createElement("header", { className: "img" }, React.createElement("img", { src: article_coverpath, alt: article_title, className: "img-fit img-fit-cover" })), React.createElement("div", { className: "article-content" }, React.createElement("h2", null, article_title), React.createElement("p", null, article_intro), React.createElement("span", { className: "read" }, "Lire l'article"))))));
                     }
                     // then set to the store and render use this to create his
                     // list
-                    me.setState({ articles: articles, nbArticles: response.length });
+                    me.setState({ articles_obj: articles_obj, articles: articles, nbArticles: response.length });
                 }
             },
             error: function (error) {
@@ -33046,26 +33060,60 @@ class List extends React.Component {
         this.props.openArticle();
     }
 
+    openNew() {
+        this.setState({ newArticle: true });
+    }
+
     render() {
         var me = this,
-            articles = me.state.articles;
+            articles = me.state.articles,
+            nbArticles = me.state.nbArticles,
+            newArticle = me.state.newArticle;
 
-        return React.createElement("div", { id: "list" }, React.createElement("section", { className: "container-fluid" }, React.createElement("header", { className: "row justify-content-center h-list" }, React.createElement("div", { className: "col-11 col-md-2 my-auto title" }, React.createElement("h3", null, "Articles")), React.createElement("div", { className: "col-11 col-md-7 my-auto text-center" }, localStorage.getItem("logged") === "true" && React.createElement("button", { className: "btn btn-blue fadein" }, "Nouvel article")), React.createElement("div", { className: "col-11 col-md-2 my-auto share" }, React.createElement("div", { className: "share-list" }, React.createElement("ul", null, React.createElement("li", { className: "share-icon text-center fadein twitter" }, React.createElement("a", { href: "https://twitter.com/MDev_ECVNantes", target: "_blank", className: "fadein twitter" }, React.createElement("i", { className: "fa fa-twitter fa-2x" }))), React.createElement("li", { className: "share-icon text-center fadein github" }, React.createElement("a", { href: "https://github.com/MaitreManuel", target: "_blank", className: "fadein github" }, React.createElement("i", { className: "fa fa-github fa-2x" }))), React.createElement("li", { className: "share-icon text-center fadein linkedin" }, React.createElement("a", { href: "https://www.linkedin.com/school/9222115/", target: "_blank", className: "fadein linkedin" }, React.createElement("i", { className: "fa fa-linkedin fa-2x" })))))))), React.createElement("section", { className: "container-fluid" }, React.createElement("div", { className: "row justify-content-center" }, React.createElement("div", { className: "col-12 col-xl-11" }, React.createElement("div", { className: "row" }, articles)))));
+        return React.createElement("div", { id: "list" }, newArticle === true && React.createElement(New, null), React.createElement("section", { className: "container-fluid" }, React.createElement("header", { className: "row justify-content-center h-list" }, React.createElement("div", { className: "col-11 col-md-2 my-auto title" }, React.createElement("h3", null, nbArticles, " Articles")), React.createElement("div", { className: "col-11 col-md-7 my-auto text-center" }, localStorage.getItem("logged") === "true" && React.createElement("button", { onClick: me.openNew, className: "btn btn-blue fadein" }, "Nouvel article")), React.createElement("div", { className: "col-11 col-md-2 my-auto share" }, React.createElement("div", { className: "share-list" }, React.createElement("ul", null, React.createElement("li", { className: "share-icon text-center fadein twitter" }, React.createElement("a", { href: "https://twitter.com/MDev_ECVNantes", target: "_blank", className: "fadein twitter" }, React.createElement("i", { className: "fa fa-twitter fa-2x" }))), React.createElement("li", { className: "share-icon text-center fadein github" }, React.createElement("a", { href: "https://github.com/MaitreManuel", target: "_blank", className: "fadein github" }, React.createElement("i", { className: "fa fa-github fa-2x" }))), React.createElement("li", { className: "share-icon text-center fadein linkedin" }, React.createElement("a", { href: "https://www.linkedin.com/school/9222115/", target: "_blank", className: "fadein linkedin" }, React.createElement("i", { className: "fa fa-linkedin fa-2x" })))))))), React.createElement("section", { className: "container-fluid" }, React.createElement("div", { className: "row justify-content-center" }, React.createElement("div", { className: "col-12 col-xl-11" }, React.createElement("div", { className: "row" }, articles)))));
     }
 }
 
 module.exports = List;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(50)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(50)))
 
 /***/ }),
 /* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {var React = __webpack_require__(11);
+var React = __webpack_require__(9);
+
+var EditorComponent = __webpack_require__(198);
+
+class New extends React.Component {
+    constructor() {
+        super();
+
+        this.state = {};
+    }
+
+    render() {
+        var me = this;
+
+        return React.createElement("div", { id: "new" }, React.createElement("section", { className: "container-fluid" }, React.createElement("div", { className: "row justify-content-center" }, React.createElement("div", { className: "col-11" }, React.createElement(EditorComponent, null)))));
+    }
+}
+
+module.exports = New;
+
+/***/ }),
+/* 193 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {var React = __webpack_require__(9);
 
 class Login extends React.Component {
     constructor() {
         super();
+
+        this.cancelLog = this.cancelLog.bind(this);
+        this.connection = this.connection.bind(this);
+        this.updateUser = this.updateUser.bind(this);
 
         this.state = {
             user: {
@@ -33074,10 +33122,6 @@ class Login extends React.Component {
                 stay_connect: false
             }
         };
-
-        this.cancelLog = this.cancelLog.bind(this);
-        this.connection = this.connection.bind(this);
-        this.updateUser = this.updateUser.bind(this);
     }
 
     componentDidMount() {
@@ -33175,10 +33219,10 @@ module.exports = Login;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(50)))
 
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var React = __webpack_require__(11);
+var React = __webpack_require__(9);
 
 class Header extends React.Component {
     constructor() {
@@ -33215,10 +33259,10 @@ class Header extends React.Component {
 module.exports = Header;
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var React = __webpack_require__(11);
+var React = __webpack_require__(9);
 
 class PreHeader extends React.Component {
     render() {
@@ -33229,10 +33273,10 @@ class PreHeader extends React.Component {
 module.exports = PreHeader;
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var React = __webpack_require__(11);
+var React = __webpack_require__(9);
 
 class Footer extends React.Component {
     render() {
@@ -33241,6 +33285,50 @@ class Footer extends React.Component {
 }
 
 module.exports = Footer;
+
+/***/ }),
+/* 197 */,
+/* 198 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var React = __webpack_require__(9);
+var FroalaEditor = __webpack_require__(199);
+
+class EditorComponent extends React.Component {
+    constructor() {
+        super();
+
+        this.handleModelChange = this.handleModelChange.bind(this);
+
+        this.state = {
+            options: {
+                placeholder: "Taper le texte de votre article...",
+                events: {
+                    'froalaEditor.focus': function (e, editor) {
+                        console.log(editor.selection.get());
+                    }
+                }
+            }
+        };
+    }
+
+    handleModelChange(model) {
+        this.setState({ model: model });
+    }
+
+    render() {
+        return React.createElement(FroalaEditor, { tag: "textarea", config: this.state.config, model: this.state.model, onModelChange: this.handleModelChange });
+    }
+}
+
+module.exports = EditorComponent;
+
+/***/ }),
+/* 199 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {!function(e,t){ true?module.exports=t(__webpack_require__(9)):"function"==typeof define&&define.amd?define(["react"],t):"object"==typeof exports?exports.index=t(require("react")):e.index=t(e.React)}(this,function(e){return function(e){function t(i){if(n[i])return n[i].exports;var o=n[i]={exports:{},id:i,loaded:!1};return e[i].call(o.exports,o,o.exports,t),o.loaded=!0,o.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){e.exports=n(3)},function(t,n){t.exports=e},function(e,t,n){"use strict";function i(e){return e&&e.__esModule?e:{default:e}}function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function r(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function s(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(t,n,i){return n&&e(t.prototype,n),i&&e(t,i),t}}(),l=n(1),u=i(l),f=function(e){function t(e){o(this,t);var n=r(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.tag=null,n.defaultTag="div",n.listeningEvents=[],n.$element=null,n.editor=null,n.config={immediateReactModelUpdate:!1,reactIgnoreAttrs:null},n.editorInitialized=!1,n.SPECIAL_TAGS=["img","button","input","a"],n.INNER_HTML_ATTR="innerHTML",n.hasSpecialTag=!1,n.oldModel=null,n}return s(t,e),a(t,[{key:"componentWillMount",value:function(){this.tag=this.props.tag||this.defaultTag}},{key:"componentDidMount",value:function(){var e=this.refs.el.tagName.toLowerCase();this.SPECIAL_TAGS.indexOf(e)!=-1&&(this.tag=e,this.hasSpecialTag=!0),this.props.onManualControllerReady?this.generateManualController():this.createEditor()}},{key:"componentWillUnmount",value:function(){this.destroyEditor()}},{key:"componentDidUpdate",value:function(){JSON.stringify(this.oldModel)!=JSON.stringify(this.props.model)&&this.setContent()}},{key:"createEditor",value:function(){this.editorInitialized||(this.config=this.props.config||this.config,this.$element=$(this.refs.el),this.setContent(!0),this.registerEvents(),this.$editor=this.$element.froalaEditor(this.config).data("froala.editor").$el,this.initListeners(),this.editorInitialized=!0)}},{key:"setContent",value:function(e){(this.editorInitialized||e)&&(this.props.model||""==this.props.model)&&(this.oldModel=this.props.model,this.hasSpecialTag?this.setSpecialTagContent():this.setNormalTagContent(e))}},{key:"setNormalTagContent",value:function(e){function t(){n.$element.froalaEditor("html.set",n.props.model||"",!0),n.$element.froalaEditor("undo.reset"),n.$element.froalaEditor("undo.saveStep")}var n=this;e?this.registerEvent(this.$element,"froalaEditor.initialized",function(){t()}):t()}},{key:"setSpecialTagContent",value:function(){var e=this.props.model;if(e){for(var t in e)e.hasOwnProperty(t)&&t!=this.INNER_HTML_ATTR&&this.$element.attr(t,e[t]);e.hasOwnProperty(this.INNER_HTML_ATTR)&&(this.$element[0].innerHTML=e[this.INNER_HTML_ATTR])}}},{key:"destroyEditor",value:function(){this.$element&&(this.listeningEvents&&this.$element.off(this.listeningEvents.join(" ")),this.$editor.off("keyup"),this.$element.froalaEditor("destroy"),this.listeningEvents.length=0,this.$element=null,this.editorInitialized=!1)}},{key:"getEditor",value:function(){return this.$element?this.$element.froalaEditor.bind(this.$element):null}},{key:"generateManualController",value:function(){var e=this,t={initialize:function(){return e.createEditor.call(e)},destroy:function(){return e.destroyEditor.call(e)},getEditor:function(){return e.getEditor.call(e)}};this.props.onManualControllerReady(t)}},{key:"updateModel",value:function(){if(this.props.onModelChange){var e="";if(this.hasSpecialTag){for(var t=this.$element[0].attributes,n={},i=0;i<t.length;i++){var o=t[i].name;this.config.reactIgnoreAttrs&&this.config.reactIgnoreAttrs.indexOf(o)!=-1||(n[o]=t[i].value)}this.$element[0].innerHTML&&(n[this.INNER_HTML_ATTR]=this.$element[0].innerHTML),e=n}else{var r=this.$element.froalaEditor("html.get");"string"==typeof r&&(e=r)}this.oldModel=e,this.props.onModelChange(e)}}},{key:"initListeners",value:function(){var e=this;this.registerEvent(this.$element,"froalaEditor.contentChanged",function(){e.updateModel()}),this.config.immediateReactModelUpdate&&this.registerEvent(this.$editor,"keyup",function(){e.updateModel()})}},{key:"registerEvent",value:function(e,t,n){e&&t&&n&&(this.listeningEvents.push(t),e.on(t,n))}},{key:"registerEvents",value:function(){var e=this.config.events;if(e)for(var t in e)e.hasOwnProperty(t)&&this.registerEvent(this.$element,t,e[t])}}]),t}(u.default.Component);t.default=f},function(e,t,n){"use strict";function i(e){return e&&e.__esModule?e:{default:e}}function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function r(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function s(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(t,n,i){return n&&e(t.prototype,n),i&&e(t,i),t}}(),l=n(1),u=i(l),f=n(2),c=i(f),h=function(e){function t(){return o(this,t),r(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return s(t,e),a(t,[{key:"render",value:function(){return u.default.createElement(this.tag,{ref:"el"},this.props.children)}}]),t}(c.default);t.default=h}])});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(50)))
 
 /***/ })
 /******/ ]);

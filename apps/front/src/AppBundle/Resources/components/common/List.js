@@ -1,20 +1,30 @@
 var React = require("react");
 
+var New = require("./New.js");
+
 class List extends React.Component {
     constructor() {
         super();
 
-        this.state = {
-             articles: [],
-             nbArticle: 0,
-        };
+        this.closeNew = this.closeNew.bind(this);
+        this.openArticle = this.openArticle.bind(this);
+        this.openNew = this.openNew.bind(this);
 
-        this.openArticle = this.openArticle.bind(this)
+        this.state = {
+            articles_obj: [],
+            articles: [],
+            nbArticle: 0,
+            newArticle: false,
+        };
     }
 
     componentDidMount() {
         document.getElementsByTagName("body")[0].id = "b-list";
         this.getArticles();
+    }
+
+    closeNew() {
+        this.setState({ newArticle: false });
     }
 
     // use to get all articles from the server
@@ -28,6 +38,7 @@ class List extends React.Component {
             type: "GET",
             success: function(response) {
                 var articles = [],
+                    articles_obj = [],
                     time = 0.3,
                     response = response.records === undefined ? response : response.records;
 
@@ -42,12 +53,13 @@ class List extends React.Component {
                             article_intro = response[i].article_intro === "" ? "Pas d'introduction" : response[i].article_intro,
                             article_coverpath = response[i].article_coverpath === "" ? "http://ccwc.org/wp-content/themes/ccwc-theme/images/no-image-available.png" : response[i].article_coverpath;
 
+                        articles_obj.push(response[i]);
                         articles.push(
                             <article onClick={() => me.openArticle(article_id)} className="col-12 col-lg-6 col-xl-4" key={"article"+ i}>
                                 <div className="wrap-article">
                                     <div className="article-entry">
                                         <header className="img">
-                                            <img src={article_coverpath} alt="Test" className="img-fit img-fit-cover" />
+                                            <img src={article_coverpath} alt={article_title} className="img-fit img-fit-cover" />
                                         </header>
                                         <div className="article-content">
                                             <h2>{article_title}</h2>
@@ -61,7 +73,7 @@ class List extends React.Component {
                     }
                     // then set to the store and render use this to create his
                     // list
-                    me.setState({ articles: articles, nbArticles: response.length });
+                    me.setState({ articles_obj: articles_obj, articles: articles, nbArticles: response.length });
                 }
             },
             error: function(error) {
@@ -78,20 +90,29 @@ class List extends React.Component {
         this.props.openArticle();
     }
 
+    openNew() {
+        this.setState({ newArticle: true });
+    }
+
     render() {
         var me = this,
-            articles = me.state.articles;
+            articles = me.state.articles,
+            nbArticles = me.state.nbArticles,
+            newArticle = me.state.newArticle;
 
         return (
             <div id="list">
+                { newArticle === true &&
+                    <New />
+                }
                 <section className="container-fluid">
                     <header className="row justify-content-center h-list">
                         <div className="col-11 col-md-2 my-auto title">
-                            <h3>Articles</h3>
+                            <h3>{nbArticles} Articles</h3>
                         </div>
                         <div className="col-11 col-md-7 my-auto text-center">
                             { localStorage.getItem("logged") === "true" &&
-                                <button className="btn btn-blue fadein">Nouvel article</button>
+                                <button onClick={me.openNew} className="btn btn-blue fadein">Nouvel article</button>
                             }
                         </div>
                         <div className="col-11 col-md-2 my-auto share">

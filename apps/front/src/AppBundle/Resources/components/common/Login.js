@@ -4,6 +4,10 @@ class Login extends React.Component {
     constructor() {
         super();
 
+        this.cancelLog = this.cancelLog.bind(this);
+        this.connection = this.connection.bind(this);
+        this.updateUser = this.updateUser.bind(this);
+
         this.state = {
             user: {
                 name: "",
@@ -11,10 +15,6 @@ class Login extends React.Component {
                 stay_connect: false,
             }
         };
-
-        this.cancelLog = this.cancelLog.bind(this);
-        this.connection = this.connection.bind(this);
-        this.updateUser = this.updateUser.bind(this);
     }
 
     componentDidMount() {

@@ -24,7 +24,8 @@ class Article {
                     article_id,
                     article_title,
                     article_intro,
-                    article_coverpath
+                    article_coverpath,
+                    article_tagslist
                     FROM ". $this->table_name;
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
@@ -57,6 +58,29 @@ class Article {
         ));
 
         return $stmt;
+    }
+
+    function create($article_title, $article_intro, $article_content, $article_authorid, $article_tagslist, $article_coverpath, $article_publicationdate, $article_updatedate) {
+        $query = "INSERT INTO articles(article_title, article_intro, article_content, article_authorid, article_tagslist, article_coverpath, article_publicationdate, article_updatedate)
+                VALUES (:article_title, :article_intro, :article_content, :article_authorid, :article_tagslist, :article_coverpath, :article_publicationdate, :article_updatedate)";
+
+        $stmt = $this->conn->prepare($query);
+        $res = $stmt->execute(array(
+            'article_title' => $article_title,
+            'article_intro' => $article_intro,
+            'article_content' => $article_content,
+            'article_authorid' => $article_authorid,
+            'article_tagslist' => $article_tagslist,
+            'article_coverpath' => $article_coverpath,
+            'article_publicationdate' => $article_publicationdate,
+            'article_updatedate' => $article_updatedate
+        ));
+
+        if($res) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 

@@ -5796,6 +5796,15 @@ div#login {
     height: 100%;
     position: relative; }
 
+div#new {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 5; }
+
 div#body-preheader {
   background-image: url(bb3076df91f71d2905482abb4cfc3f4d.jpg);
   background-attachment: fixed;

@@ -4,8 +4,8 @@ class Header extends React.Component {
     constructor() {
         super();
 
-        this.openList = this.openList.bind(this)
-        this.openLogin = this.openLogin.bind(this)
+        this.openList = this.openList.bind(this);
+        this.openLogin = this.openLogin.bind(this);
     }
 
     deconnection() {
